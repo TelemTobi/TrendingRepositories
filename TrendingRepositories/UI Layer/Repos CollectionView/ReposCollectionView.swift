@@ -1,5 +1,5 @@
 //
-//  UIViewController.swift
+//  ReposCollectionViewController.swift
 //  TrendingRepositories
 //
 //  Created by Telem Tobi on 29/10/2021.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DAE7DC1572FDC36BD8D9242 /* Pods_TrendingRepositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */; };
 		D23EF0B5272C55C1003E0AFD /* ReposCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */; };
 		D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F7F22B272BEC24004D883E /* Assets.xcassets */; };
 		D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingRepositories.debug.xcconfig"; path = "Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories.debug.xcconfig"; sourceTree = "<group>"; };
+		B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrendingRepositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCollectionView.swift; sourceTree = "<group>"; };
 		D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		D2F7F230272BEC24004D883E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F7F23D272BF215004D883E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D2F7F240272BF597004D883E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E3CD34B37DA8CBC26A41F783 /* Pods-TrendingRepositories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingRepositories.release.xcconfig"; path = "Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +55,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAE7DC1572FDC36BD8D9242 /* Pods_TrendingRepositories.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DC6B5E9AF611B287E4F2E36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */,
+				E3CD34B37DA8CBC26A41F783 /* Pods-TrendingRepositories.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BDA2BA608BD06CFBDFD90FD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D23EF0B3272C5597003E0AFD /* Repos CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +157,8 @@
 			children = (
 				D2F7F221272BEC22004D883E /* TrendingRepositories */,
 				D2F7F220272BEC22004D883E /* Products */,
+				0DC6B5E9AF611B287E4F2E36 /* Pods */,
+				BDA2BA608BD06CFBDFD90FD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,9 +265,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2F7F233272BEC24004D883E /* Build configuration list for PBXNativeTarget "TrendingRepositories" */;
 			buildPhases = (
+				BF7C21A168D49890B1528CB6 /* [CP] Check Pods Manifest.lock */,
 				D2F7F21B272BEC22004D883E /* Sources */,
 				D2F7F21C272BEC22004D883E /* Frameworks */,
 				D2F7F21D272BEC22004D883E /* Resources */,
+				A027B1D538C1FA15ABFF43CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +325,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A027B1D538C1FA15ABFF43CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF7C21A168D49890B1528CB6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrendingRepositories-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2F7F21B272BEC22004D883E /* Sources */ = {
@@ -460,11 +529,14 @@
 		};
 		D2F7F234272BEC24004D883E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L8T49D2F65;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrendingRepositories/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Github Repos";
@@ -481,6 +553,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TelemTobi.TrendingRepositories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,11 +562,14 @@
 		};
 		D2F7F235272BEC24004D883E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3CD34B37DA8CBC26A41F783 /* Pods-TrendingRepositories.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L8T49D2F65;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrendingRepositories/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Github Repos";
@@ -510,6 +586,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TelemTobi.TrendingRepositories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

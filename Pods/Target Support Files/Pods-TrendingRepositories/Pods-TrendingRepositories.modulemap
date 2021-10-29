@@ -1,0 +1,6 @@
+framework module Pods_TrendingRepositories {
+  umbrella header "Pods-TrendingRepositories-umbrella.h"
+
+  export *
+  module * { export * }
+}
