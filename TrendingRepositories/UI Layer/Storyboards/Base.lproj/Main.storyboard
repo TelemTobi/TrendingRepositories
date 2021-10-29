@@ -3,6 +3,159 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="fwV-5W-2Bb">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" extendedLayoutIncludesOpaqueBars="YES" id="VUZ-qk-7xo" customClass="MainTabBarController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zwx-CQ-Rn0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZs-lI-v8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74" y="56"/>
+        </scene>
+        <!--Trending Repositories-->
+        <scene sceneID="RT1-RL-Owg">
+            <objects>
+                <viewController storyboardIdentifier="TrendingReposController" title="Trending Repositories" extendedLayoutIncludesOpaqueBars="YES" id="V5q-EI-DfK" customClass="TrendingReposController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qFy-Ub-FUD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-8K-rr1">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <segue destination="gBF-x5-GM6" kind="embed" id="Ip4-OD-bf8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HgV-eh-Vcq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HgV-eh-Vcq" firstAttribute="trailing" secondItem="QXs-8K-rr1" secondAttribute="trailing" id="AGG-Yu-yCi"/>
+                            <constraint firstItem="QXs-8K-rr1" firstAttribute="top" secondItem="HgV-eh-Vcq" secondAttribute="top" id="LyG-5A-jSm"/>
+                            <constraint firstItem="QXs-8K-rr1" firstAttribute="leading" secondItem="HgV-eh-Vcq" secondAttribute="leading" id="u6Q-i9-hAQ"/>
+                            <constraint firstItem="HgV-eh-Vcq" firstAttribute="bottom" secondItem="QXs-8K-rr1" secondAttribute="bottom" id="voI-X3-hs2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Trending" image="flame" catalog="system" selectedImage="flame.fill" id="Qmc-QB-x6Y"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ODb-Zu-rgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="56"/>
+        </scene>
+        <!--Favorite Repositories-->
+        <scene sceneID="zCd-gE-Kmf">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteReposController" title="Favorite Repositories" extendedLayoutIncludesOpaqueBars="YES" id="iJx-X1-Oac" customClass="FavoriteReposController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YFM-43-fl1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnO-jt-q7y">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <segue destination="gBF-x5-GM6" kind="embed" id="cWf-ZC-dDg"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RrH-q7-A2x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZnO-jt-q7y" firstAttribute="top" secondItem="RrH-q7-A2x" secondAttribute="top" id="1x4-4N-wyY"/>
+                            <constraint firstItem="ZnO-jt-q7y" firstAttribute="leading" secondItem="RrH-q7-A2x" secondAttribute="leading" id="CVj-1z-bBT"/>
+                            <constraint firstItem="RrH-q7-A2x" firstAttribute="trailing" secondItem="ZnO-jt-q7y" secondAttribute="trailing" id="oLD-mU-7Qe"/>
+                            <constraint firstItem="RrH-q7-A2x" firstAttribute="bottom" secondItem="ZnO-jt-q7y" secondAttribute="bottom" id="sc5-no-pqg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Feb-hK-dOI"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNd-ty-gpy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="56"/>
+        </scene>
+        <!--Repos Collection View Controller-->
+        <scene sceneID="nXt-yy-oLR">
+            <objects>
+                <collectionViewController id="gBF-x5-GM6" customClass="ReposCollectionViewController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="rHl-4r-b6O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Go2-az-Qky">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FhE-33-nIv">
+                                <rect key="frame" x="0.0" y="50" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WAG-dp-d6z">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchBarHeader" id="lUB-Dr-VwQ">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" placeholder="Looking for anything specific?" translatesAutoresizingMaskIntoConstraints="NO" id="2Iw-sM-85A">
+                                    <rect key="frame" x="0.0" y="4" width="414" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="ooY-ch-ZA9"/>
+                                    </constraints>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="gBF-x5-GM6" id="QJT-58-Mf1"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="2Iw-sM-85A" secondAttribute="trailing" id="3H5-RY-amA"/>
+                                <constraint firstItem="2Iw-sM-85A" firstAttribute="top" secondItem="lUB-Dr-VwQ" secondAttribute="top" constant="4" id="DZ5-Fa-hfn"/>
+                                <constraint firstAttribute="bottom" secondItem="2Iw-sM-85A" secondAttribute="bottom" constant="4" id="IfC-R2-Atd"/>
+                                <constraint firstItem="2Iw-sM-85A" firstAttribute="leading" secondItem="lUB-Dr-VwQ" secondAttribute="leading" id="xJv-lx-1UJ"/>
+                            </constraints>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="gBF-x5-GM6" id="ZzX-Sj-wVU"/>
+                            <outlet property="delegate" destination="gBF-x5-GM6" id="uTh-cw-cYm"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aic-Oz-I2U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023" y="730"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ip4-OD-bf8"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="flame" catalog="system" width="108" height="128"/>
+        <image name="flame.fill" catalog="system" width="108" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
