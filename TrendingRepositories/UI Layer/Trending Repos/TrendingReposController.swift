@@ -11,7 +11,6 @@ class TrendingReposController: UIViewController {
 	
 	weak var coordinator: TrendingCoordinator?
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		

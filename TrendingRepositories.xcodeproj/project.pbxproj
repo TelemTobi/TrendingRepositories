@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6DAE7DC1572FDC36BD8D9242 /* Pods_TrendingRepositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */; };
 		D23EF0B5272C55C1003E0AFD /* ReposCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */; };
+		D23EF0B7272C92F6003E0AFD /* Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B6272C92F6003E0AFD /* Github.swift */; };
+		D23EF0B9272C98F7003E0AFD /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */; };
 		D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F7F22B272BEC24004D883E /* Assets.xcassets */; };
 		D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */; };
 		D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */; };
@@ -30,6 +32,8 @@
 		AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingRepositories.debug.xcconfig"; path = "Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories.debug.xcconfig"; sourceTree = "<group>"; };
 		B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrendingRepositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCollectionView.swift; sourceTree = "<group>"; };
+		D23EF0B6272C92F6003E0AFD /* Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github.swift; sourceTree = "<group>"; };
+		D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		D2F38B55272C22F7009DE6D6 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -68,7 +72,6 @@
 				AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */,
 				E3CD34B37DA8CBC26A41F783 /* Pods-TrendingRepositories.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -108,6 +111,7 @@
 		D2F38B50272C21CC009DE6D6 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -199,6 +203,7 @@
 		D2F7F237272BECC6004D883E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0B6272C92F6003E0AFD /* Github.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -377,10 +382,12 @@
 				D2F38B56272C22F7009DE6D6 /* K.swift in Sources */,
 				D2F38B5F272C2F82009DE6D6 /* TrendingReposController.swift in Sources */,
 				D2F7F225272BEC22004D883E /* SceneDelegate.swift in Sources */,
+				D23EF0B7272C92F6003E0AFD /* Github.swift in Sources */,
 				D2F38B5B272C28F7009DE6D6 /* TrendingCoordinator.swift in Sources */,
 				D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */,
 				D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */,
 				D23EF0B5272C55C1003E0AFD /* ReposCollectionView.swift in Sources */,
+				D23EF0B9272C98F7003E0AFD /* Date+Ext.swift in Sources */,
 				D2F7F23E272BF215004D883E /* Coordinator.swift in Sources */,
 				D2F38B65272C4234009DE6D6 /* UIView+Ext.swift in Sources */,
 				D2F38B61272C2F90009DE6D6 /* FavoriteReposController.swift in Sources */,
