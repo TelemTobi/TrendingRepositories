@@ -93,13 +93,16 @@ extension UIView {
 		}
 	}
 
-// MARK: - Loop
+// MARK: - Animations
 	
-	func loopViewHierarchy(block: ((_ view: UIView) -> Bool)?) {
-		
-		if block?(self) ?? true {
-			for subview in subviews {
-				subview.loopViewHierarchy(block: block)
+	func beatAnimation(scale: CGFloat = 1.04, completion: @escaping () -> Void = {}) {
+		UIView.animate(withDuration: 0.3, delay: 0.3, options: [.allowUserInteraction]) {
+			self.transform = .init(scaleX: scale, y: scale)
+		} completion: { (_) in
+			UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction]) {
+				self.transform = .identity
+			} completion: { (_) in
+				completion()
 			}
 		}
 	}

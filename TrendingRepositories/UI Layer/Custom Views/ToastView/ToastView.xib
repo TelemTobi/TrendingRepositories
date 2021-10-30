@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ToastView" customModule="TrendingRepositories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fc-MD-32q" userLabel="Content View">
+                    <rect key="frame" x="110" y="0.0" width="194.5" height="56"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Toast Message Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hah-Jp-Ipr">
+                            <rect key="frame" x="20" y="8" width="154.5" height="40"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" systemColor="systemBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                    <constraints>
+                        <constraint firstItem="hah-Jp-Ipr" firstAttribute="top" secondItem="8Fc-MD-32q" secondAttribute="top" constant="8" id="FIh-ST-c04"/>
+                        <constraint firstAttribute="bottom" secondItem="hah-Jp-Ipr" secondAttribute="bottom" constant="8" id="KXm-z2-Ba0"/>
+                        <constraint firstAttribute="trailing" secondItem="hah-Jp-Ipr" secondAttribute="trailing" constant="20" id="iZK-LV-KaB"/>
+                        <constraint firstItem="hah-Jp-Ipr" firstAttribute="leading" secondItem="8Fc-MD-32q" secondAttribute="leading" constant="20" id="qWs-WB-4cb"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="8Fc-MD-32q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="3Uo-nr-sex"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Fc-MD-32q" secondAttribute="trailing" constant="16" id="LVk-Be-8qk"/>
+                <constraint firstAttribute="bottom" secondItem="8Fc-MD-32q" secondAttribute="bottom" constant="4" id="YBH-ff-Wsq"/>
+                <constraint firstItem="8Fc-MD-32q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oBK-YX-IU0"/>
+                <constraint firstItem="8Fc-MD-32q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="soU-nd-rx9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="messageLabel" destination="hah-Jp-Ipr" id="Ebx-rS-22l"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="398.4375"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

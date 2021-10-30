@@ -37,8 +37,8 @@ class ReposListController: UICollectionViewController {
 //	MARK: - Setup Methods
 	
 	private func registerReusableViews() {
-		collectionView.register(reusableViewType: SearchBarHeader.self)
 		collectionView.register(cellType: RepoCollectionViewCell.self)
+		collectionView.register(reusableViewType: SearchBarHeader.self, ofKind: .header)
 	}
 	
 	private func registerSubscribers() {
@@ -55,7 +55,10 @@ class ReposListController: UICollectionViewController {
 	
 	private func reloadData() {
 		collectionView.reloadData()
-		collectionView.setContentOffset(.zero, animated: true)
+		
+		if dataProvider.currentPage == 1 {
+			collectionView.setContentOffset(.zero, animated: true)
+		}
 	}
 }
 
@@ -67,18 +70,11 @@ extension ReposListController {
 		
 	}
 	
-	override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-		
-	}
-	
-	override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-		
-	}
-	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		
+		if collectionView.reachedEnd(offset: 50) {
+			dataProvider.loadMoreResults()
+		}
 	}
-	
 }
 
 //	MARK: - CollectionView DataSource
@@ -99,13 +95,6 @@ extension ReposListController {
 		let searchBarHeader = collectionView.dequeueReusableView(with: SearchBarHeader.self, for: indexPath)
 		searchBarHeader.delegate = self
 		return searchBarHeader
-	}
-}
-
-extension ReposListController: UICollectionViewDelegateFlowLayout {
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		CGSize(width: collectionView.frame.width, height: 77)
 	}
 }
 

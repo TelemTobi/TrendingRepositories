@@ -24,7 +24,10 @@
 		D23EF0D4272D6559003E0AFD /* SearchBarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D3272D6559003E0AFD /* SearchBarHeader.swift */; };
 		D23EF0D6272D6577003E0AFD /* SearchBarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EF0D5272D6577003E0AFD /* SearchBarHeader.xib */; };
 		D23EF0DA272D72EC003E0AFD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */; };
-		D24E1644272D8F1400916729 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1643272D8F1400916729 /* UserDefaults.swift */; };
+		D24E1644272D8F1400916729 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */; };
+		D24E1646272D9BE800916729 /* IndexPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1645272D9BE800916729 /* IndexPath+Ext.swift */; };
+		D24E164E272DB01A00916729 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24E164D272DB01900916729 /* ToastView.xib */; };
+		D24E1650272DB02500916729 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E164F272DB02500916729 /* ToastView.swift */; };
 		D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F7F22B272BEC24004D883E /* Assets.xcassets */; };
 		D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */; };
 		D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */; };
@@ -61,7 +64,10 @@
 		D23EF0D3272D6559003E0AFD /* SearchBarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarHeader.swift; sourceTree = "<group>"; };
 		D23EF0D5272D6577003E0AFD /* SearchBarHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarHeader.xib; sourceTree = "<group>"; };
 		D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
-		D24E1643272D8F1400916729 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		D24E1645272D9BE800916729 /* IndexPath+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Ext.swift"; sourceTree = "<group>"; };
+		D24E164D272DB01900916729 /* ToastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
+		D24E164F272DB02500916729 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		D2F38B55272C22F7009DE6D6 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -117,7 +123,7 @@
 				D23EF0B4272C55C1003E0AFD /* ReposListController.swift */,
 				D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */,
 				D23EF0BD272D373E003E0AFD /* Repo Cell */,
-				D23EF0D2272D6546003E0AFD /* Section Header */,
+				D23EF0D2272D6546003E0AFD /* SearchBar Header */,
 			);
 			path = "Repos List";
 			sourceTree = "<group>";
@@ -143,13 +149,30 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		D23EF0D2272D6546003E0AFD /* Section Header */ = {
+		D23EF0D2272D6546003E0AFD /* SearchBar Header */ = {
 			isa = PBXGroup;
 			children = (
 				D23EF0D3272D6559003E0AFD /* SearchBarHeader.swift */,
 				D23EF0D5272D6577003E0AFD /* SearchBarHeader.xib */,
 			);
-			path = "Section Header";
+			path = "SearchBar Header";
+			sourceTree = "<group>";
+		};
+		D24E164C272DB00000916729 /* ToastView */ = {
+			isa = PBXGroup;
+			children = (
+				D24E164D272DB01900916729 /* ToastView.xib */,
+				D24E164F272DB02500916729 /* ToastView.swift */,
+			);
+			path = ToastView;
+			sourceTree = "<group>";
+		};
+		D24E1651272DB05C00916729 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				D24E164C272DB00000916729 /* ToastView */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		D2F38B4B272C1C1C009DE6D6 /* Main Tab Bar */ = {
@@ -174,7 +197,8 @@
 			children = (
 				D23EF0C6272D48F8003E0AFD /* ClassName.swift */,
 				D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */,
-				D24E1643272D8F1400916729 /* UserDefaults.swift */,
+				D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */,
+				D24E1645272D9BE800916729 /* IndexPath+Ext.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -281,6 +305,7 @@
 			children = (
 				D2F7F23A272BECDD004D883E /* Storyboards */,
 				D2F7F23F272BF4EA004D883E /* Navigation */,
+				D24E1651272DB05C00916729 /* Custom Views */,
 				D23EF0D0272D5A61003E0AFD /* Controllers */,
 			);
 			path = "UI Layer";
@@ -389,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24E164E272DB01A00916729 /* ToastView.xib in Resources */,
 				D23EF0C3272D413F003E0AFD /* RepoCollectionViewCell.xib in Resources */,
 				D23EF0D6272D6577003E0AFD /* SearchBarHeader.xib in Resources */,
 				D2F7F22F272BEC24004D883E /* LaunchScreen.storyboard in Resources */,
@@ -465,11 +491,13 @@
 				D23EF0DA272D72EC003E0AFD /* UIImageView+Ext.swift in Sources */,
 				D2F7F23E272BF215004D883E /* Coordinator.swift in Sources */,
 				D23EF0BF272D37D0003E0AFD /* Repository.swift in Sources */,
+				D24E1646272D9BE800916729 /* IndexPath+Ext.swift in Sources */,
+				D24E1650272DB02500916729 /* ToastView.swift in Sources */,
 				D2F38B65272C4234009DE6D6 /* UIView+Ext.swift in Sources */,
 				D2F38B61272C2F90009DE6D6 /* FavoriteReposController.swift in Sources */,
 				D2F38B5D272C290C009DE6D6 /* FavoritesCoordinator.swift in Sources */,
 				D23EF0C5272D486A003E0AFD /* UICollectionView+Ext.swift in Sources */,
-				D24E1644272D8F1400916729 /* UserDefaults.swift in Sources */,
+				D24E1644272D8F1400916729 /* UserDefaults+Ext.swift in Sources */,
 				D23EF0C7272D48F8003E0AFD /* ClassName.swift in Sources */,
 				D2F7F241272BF597004D883E /* AppCoordinator.swift in Sources */,
 				D23EF0C1272D3CE9003E0AFD /* CodableResponses.swift in Sources */,

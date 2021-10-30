@@ -29,6 +29,13 @@ extension UIViewController {
 	@objc func dismissKeyboard() {
 		view.endEditing(true)
 	}
+	
+	@discardableResult
+	func showToast(with message: String, duration: ToastView.ToastDuration) -> ToastView {
+		let toastView = ToastView.instance
+		toastView.show(inside: view, with: message, duration: duration)
+		return toastView
+	}
 }
 
 

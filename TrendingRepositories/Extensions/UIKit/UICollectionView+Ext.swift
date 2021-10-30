@@ -9,7 +9,22 @@ import UIKit
 
 extension UICollectionView {
 	
-	public func register<T: UICollectionViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
+	public enum ReusableViewKind {
+		case header
+		case footer
+		
+		var toString: String {
+			switch self {
+			case .header: return UICollectionView.elementKindSectionHeader
+			case .footer: return UICollectionView.elementKindSectionFooter
+			}
+		}
+	}
+	
+	public func register<T: UICollectionViewCell>(
+		cellType: T.Type,
+		bundle: Bundle? = nil) {
+			
 		let className = cellType.className
 		let nib = UINib(nibName: className, bundle: bundle)
 		register(nib, forCellWithReuseIdentifier: className)
@@ -17,11 +32,12 @@ extension UICollectionView {
 	
 	public func register<T: UICollectionReusableView>(
 		reusableViewType: T.Type,
-		ofKind kind: String = UICollectionView.elementKindSectionHeader,
+		ofKind kind: ReusableViewKind,
 		bundle: Bundle? = nil) {
+			
 		let className = reusableViewType.className
 		let nib = UINib(nibName: className, bundle: bundle)
-		register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
+		register(nib, forSupplementaryViewOfKind: kind.toString, withReuseIdentifier: className)
 	}
 
 	public func dequeueReusableCell<T: UICollectionViewCell>(
@@ -37,16 +53,16 @@ extension UICollectionView {
 	public func dequeueReusableView<T: UICollectionReusableView>(
 		with type: T.Type,
 		for indexPath: IndexPath,
-		ofKind kind: String = UICollectionView.elementKindSectionHeader) -> T {
+		ofKind kind: ReusableViewKind = .header) -> T {
 			
 		return dequeueReusableSupplementaryView(
-			ofKind: kind,
+			ofKind: kind.toString,
 			withReuseIdentifier: type.className,
 			for: indexPath
 		) as! T
 	}
 	
-	public func reachedEnd(withOffset offset: CGFloat = 0) -> Bool {
+	public func reachedEnd(offset: CGFloat = 0) -> Bool {
 		contentOffset.y > contentSize.height - frame.size.height - offset
 	}
 }
