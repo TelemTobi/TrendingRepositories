@@ -10,4 +10,8 @@ import Foundation
 class FavoriteReposViewModel: BaseViewModel, ReposDataProvider {
 	
 	var repos: [Repository] = []
+	
+	func repo(for indexPath: IndexPath) -> Repository {
+		return repos[indexPath.item]
+	}
 }

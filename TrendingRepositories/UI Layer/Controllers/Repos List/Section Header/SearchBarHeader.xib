@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="SearchBarHeader" customModule="TrendingRepositories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" placeholder="Looking for anything specific?" translatesAutoresizingMaskIntoConstraints="NO" id="let-48-ZFR">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="let-48-ZFR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DP3-qZ-cx8"/>
+                <constraint firstItem="let-48-ZFR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Oqo-Xr-Hz9"/>
+                <constraint firstAttribute="bottom" secondItem="let-48-ZFR" secondAttribute="bottom" id="jQb-e4-UDF"/>
+                <constraint firstAttribute="trailing" secondItem="let-48-ZFR" secondAttribute="trailing" id="m8E-9r-WQH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="searchBar" destination="let-48-ZFR" id="M3o-RP-SdQ"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="371.31696428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

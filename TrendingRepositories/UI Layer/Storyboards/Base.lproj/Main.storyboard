@@ -61,7 +61,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listContainerView" destination="QXs-8K-rr1" id="c8x-O6-aNI"/>
-                        <outlet property="timeframeControl" destination="7rT-6w-gUZ" id="ahL-kL-Zg0"/>
+                        <outlet property="timeframesControl" destination="7rT-6w-gUZ" id="ahL-kL-Zg0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODb-Zu-rgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

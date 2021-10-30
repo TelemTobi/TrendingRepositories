@@ -14,9 +14,36 @@ extension UICollectionView {
 		let nib = UINib(nibName: className, bundle: bundle)
 		register(nib, forCellWithReuseIdentifier: className)
 	}
+	
+	public func register<T: UICollectionReusableView>(
+		reusableViewType: T.Type,
+		ofKind kind: String = UICollectionView.elementKindSectionHeader,
+		bundle: Bundle? = nil) {
+		let className = reusableViewType.className
+		let nib = UINib(nibName: className, bundle: bundle)
+		register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
+	}
 
-	public func dequeueReusableCell<T: UICollectionViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
-		return self.dequeueReusableCell(withReuseIdentifier: type.className, for: indexPath) as! T
+	public func dequeueReusableCell<T: UICollectionViewCell>(
+		with type: T.Type,
+		for indexPath: IndexPath) -> T {
+			
+		return self.dequeueReusableCell(
+			withReuseIdentifier: type.className,
+			for: indexPath
+		) as! T
+	}
+	
+	public func dequeueReusableView<T: UICollectionReusableView>(
+		with type: T.Type,
+		for indexPath: IndexPath,
+		ofKind kind: String = UICollectionView.elementKindSectionHeader) -> T {
+			
+		return dequeueReusableSupplementaryView(
+			ofKind: kind,
+			withReuseIdentifier: type.className,
+			for: indexPath
+		) as! T
 	}
 	
 	public func reachedEnd(withOffset offset: CGFloat = 0) -> Bool {

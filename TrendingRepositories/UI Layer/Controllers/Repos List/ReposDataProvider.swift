@@ -10,4 +10,6 @@ import Foundation
 protocol ReposDataProvider: BaseViewModel {
 	
 	var repos: [Repository] { get }
+	
+	func repo(for indexPath: IndexPath) -> Repository
 }

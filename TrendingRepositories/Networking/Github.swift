@@ -8,10 +8,10 @@
 import Foundation
 import Moya
 
-public enum TimeFrame {
-	case week
-	case month
-	case year
+public enum TimeFrame: Int {
+	case week = 0
+	case month = 1
+	case year = 2
 }
 
 extension TimeFrame {

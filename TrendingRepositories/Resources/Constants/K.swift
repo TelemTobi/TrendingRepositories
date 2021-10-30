@@ -12,4 +12,8 @@ struct K {
 	enum Storyboard: String {
 		case main = "Main"
 	}
+	
+	enum Message {
+		static let networkError = "A network error has occured"
+	}
 }

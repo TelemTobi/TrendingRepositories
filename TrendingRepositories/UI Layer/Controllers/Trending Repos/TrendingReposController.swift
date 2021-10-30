@@ -14,13 +14,17 @@ class TrendingReposController: UIViewController {
 	private let viewModel = TrendingReposViewModel()
 	private var reposList: ReposListController!
 	
-	@IBOutlet private weak var timeframeControl: UISegmentedControl!
+	@IBOutlet private weak var timeframesControl: UISegmentedControl!
 	@IBOutlet private weak var listContainerView: UIView!
+	
+	private var selectedTimeFrame: TimeFrame = .week
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		setupReposList()
+		setupTimeframsControl()
+		viewModel.fetchTrendingRepos(timeFrame: selectedTimeFrame)
 	}
 	
 //	MARK: - Setup Methods
@@ -32,6 +36,18 @@ class TrendingReposController: UIViewController {
 		reposList.didMove(toParent: self)
 		listContainerView.addSubview(reposList.collectionView)
 		reposList.collectionView.pinEdgesToSuperview()
+	}
+	
+	private func setupTimeframsControl() {
+		timeframesControl.addTarget(self, action: #selector(timeframeChanged), for: .valueChanged)
+	}
+	
+	
+//	MARK: - Private Methods
+	
+	@objc private func timeframeChanged() {
+		selectedTimeFrame = TimeFrame(rawValue: timeframesControl.selectedSegmentIndex) ?? .week
+		viewModel.fetchTrendingRepos(timeFrame: selectedTimeFrame)
 	}
 	
 }

@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ReposListController: UICollectionViewController {
 	
-	private let searchBarHeaderID = "SearchBarHeader"
-	
 	private let dataProvider: ReposDataProvider
+	private var subscriptions = Set<AnyCancellable>()
 	
 	init(dataProvider: ReposDataProvider) {
 		self.dataProvider = dataProvider
@@ -30,18 +30,32 @@ class ReposListController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		registerCells()
+		registerReusableViews()
 		registerSubscribers()
 	}
 	
 //	MARK: - Setup Methods
 	
-	private func registerCells() {
+	private func registerReusableViews() {
+		collectionView.register(reusableViewType: SearchBarHeader.self)
 		collectionView.register(cellType: RepoCollectionViewCell.self)
 	}
 	
 	private func registerSubscribers() {
+		dataProvider.isLoadingPublisher
+			.sink { [weak self] _ in self?.reloadData() }
+			.store(in: &subscriptions)
 		
+		dataProvider.errorMsgPublisher
+			.sink(receiveValue: { print($0) })
+			.store(in: &subscriptions)
+	}
+	
+//	MARK: - Private Methods
+	
+	private func reloadData() {
+		collectionView.reloadData()
+		collectionView.setContentOffset(.zero, animated: true)
 	}
 }
 
@@ -60,6 +74,10 @@ extension ReposListController {
 	override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
 		
 	}
+	
+	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		
+	}
 }
 
 //	MARK: - CollectionView DataSource
@@ -67,20 +85,27 @@ extension ReposListController {
 extension ReposListController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		20
+		dataProvider.isLoading ? 20 : dataProvider.repos.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		collectionView.dequeueReusableCell(with: RepoCollectionViewCell.self, for: indexPath)
+		let repoCell = collectionView.dequeueReusableCell(with: RepoCollectionViewCell.self, for: indexPath)
+		repoCell.configure(with: dataProvider, indexPath)
+		return repoCell
 	}
 	
-//	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//		collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: searchBarHeaderID, for: indexPath)
-//	}
+	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		let searchBarHeader = collectionView.dequeueReusableView(with: SearchBarHeader.self, for: indexPath)
+		searchBarHeader.delegate = self
+		return searchBarHeader
+	}
 }
 
 //	MARK: - SearchBar Delegate
 
 extension ReposListController: UISearchBarDelegate {
 	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		
+	}
 }

@@ -92,4 +92,84 @@ extension UIView {
 			self.trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
 		}
 	}
+
+// MARK: - Loop
+	
+	func loopViewHierarchy(block: ((_ view: UIView) -> Bool)?) {
+		
+		if block?(self) ?? true {
+			for subview in subviews {
+				subview.loopViewHierarchy(block: block)
+			}
+		}
+	}
+
+//	MARK: - Shimmer Loader
+	
+	public func smartShimmer() {
+		addLoader(self, start: true)
+	}
+	
+	public func stopSmartShimmer() {
+		addLoader(self, start: false)
+	}
+	
+	private func addLoader(_ view: UIView, start: Bool) {
+		view.layoutIfNeeded()
+
+		for subView in view.subviews {
+			self.animateShimmer(view: subView, start: start)
+		}
+	}
+	
+	private func animateShimmer(view:UIView, start: Bool, repeatCount: Float = .infinity) {
+		
+		if start {
+			
+			isUserInteractionEnabled = false
+			
+			let firstColor: CGFloat = traitCollection.userInterfaceStyle == .dark ? 0.42 : 0.92
+			let secondColor: CGFloat = traitCollection.userInterfaceStyle == .dark ? 0.46 : 0.96
+			
+			// 1. Add Color Layer
+			let colorLayer = CALayer()
+			colorLayer.backgroundColor = UIColor(white: firstColor, alpha: 1).cgColor
+			colorLayer.frame = view.bounds
+			colorLayer.name = "colorLayer"
+			view.layer.addSublayer(colorLayer)
+			view.autoresizesSubviews = true
+			if view.cornerRadius == 0, !(view is UIImageView) {
+				view.cornerRadius = 5
+			}
+			
+			// 2. Add loader Layer
+			let gradientLayer = CAGradientLayer()
+			gradientLayer.colors = [
+				UIColor(white: firstColor, alpha: 1).cgColor,
+				UIColor(white: secondColor, alpha: 1).cgColor,
+				UIColor(white: firstColor, alpha: 1).cgColor
+			]
+			gradientLayer.locations = [0,0.4,0.8, 1]
+			gradientLayer.name = "loaderLayer"
+			gradientLayer.startPoint = CGPoint(x: 0.0, y: view is UIImageView ? 0.4 : 0.5)
+			gradientLayer.endPoint = CGPoint(x: 1.0, y: view is UIImageView ? 0.6 : 0.5)
+			gradientLayer.frame = view.bounds
+			view.layer.addSublayer(gradientLayer)
+			
+			// 3. Animate loader layer
+			let animation = CABasicAnimation(keyPath: "locations")
+			animation.duration = 1.2
+			animation.fromValue = [-1.0, -0.6, -0.2, 0]
+			animation.toValue = [1.0, 1.4, 1.8, 2]
+			animation.repeatCount = repeatCount
+			gradientLayer.add(animation, forKey: "smartLoader")
+		}
+		else {
+			isUserInteractionEnabled = true
+			
+			if let smartLayers = view.layer.sublayers?.filter({$0.name == "colorLayer" || $0.name == "loaderLayer"}) {
+				smartLayers.forEach({$0.removeFromSuperlayer()})
+			}
+		}
+	}
 }
