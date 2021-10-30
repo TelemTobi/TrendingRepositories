@@ -9,6 +9,50 @@ import UIKit
 
 extension UIView {
 	
+	static var instance: Self {
+		return Bundle.main.loadNibNamed(
+			identifier,
+			owner: self,
+			options: nil
+		)?.first as! Self
+	}
+	
+	static var identifier: String {
+		let className = "\(self)"
+		let components = className.split{$0 == "."}.map ( String.init )
+		return components.last!
+	}
+	
+// MARK: - IBInspectables
+	
+	@IBInspectable var cornerRadius: CGFloat {
+		get {
+			return layer.cornerRadius
+		}
+		set {
+			layer.cornerRadius = newValue
+			clipsToBounds = newValue > 0
+		}
+	}
+	
+	@IBInspectable var borderWidth: CGFloat {
+		get {
+			return layer.borderWidth
+		}
+		set {
+			layer.borderWidth = newValue
+		}
+	}
+	
+	@IBInspectable var borderColor: UIColor? {
+		get {
+			return UIColor(cgColor: layer.borderColor!)
+		}
+		set {
+			layer.borderColor = newValue?.cgColor
+		}
+	}
+	
 //	MARK: - Constraints
 	
 	func pinEdgesToSuperview(padding: UIEdgeInsets = .zero) {

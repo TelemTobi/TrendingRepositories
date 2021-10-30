@@ -12,10 +12,13 @@ struct Repository: Codable {
 	let id: Int
 	let name: String
 	let fullName: String
-	var description: String?
 	let url: String
 	let owner: Owner
-
+	let creationDate: String
+	
+	var language: String?
+	var description: String?
+	
 	let starsCount: Int
 	let forksCount: Int
 	let watchersCount: Int
@@ -23,10 +26,12 @@ struct Repository: Codable {
 	enum CodingKeys: String, CodingKey {
 		case id
 		case name
-		case description
-		case url
-		case owner
 		case fullName = "full_name"
+		case url = "html_url"
+		case owner
+		case creationDate = "created_at"
+		case language
+		case description
 		case starsCount = "stargazers_count"
 		case forksCount = "forks_count"
 		case watchersCount = "watchers_count"

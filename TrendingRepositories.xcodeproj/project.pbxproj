@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		6DAE7DC1572FDC36BD8D9242 /* Pods_TrendingRepositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */; };
-		D23EF0B5272C55C1003E0AFD /* ReposCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */; };
+		D23EF0B5272C55C1003E0AFD /* ReposListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B4272C55C1003E0AFD /* ReposListController.swift */; };
 		D23EF0B7272C92F6003E0AFD /* Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B6272C92F6003E0AFD /* Github.swift */; };
 		D23EF0B9272C98F7003E0AFD /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */; };
 		D23EF0BC272D3642003E0AFD /* RepoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0BB272D3642003E0AFD /* RepoCollectionViewCell.swift */; };
 		D23EF0BF272D37D0003E0AFD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0BE272D37D0003E0AFD /* Repository.swift */; };
 		D23EF0C1272D3CE9003E0AFD /* CodableResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C0272D3CE9003E0AFD /* CodableResponses.swift */; };
+		D23EF0C3272D413F003E0AFD /* RepoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EF0C2272D413F003E0AFD /* RepoCollectionViewCell.xib */; };
+		D23EF0C5272D486A003E0AFD /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C4272D486A003E0AFD /* UICollectionView+Ext.swift */; };
+		D23EF0C7272D48F8003E0AFD /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C6272D48F8003E0AFD /* ClassName.swift */; };
+		D23EF0C9272D503D003E0AFD /* ReposDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */; };
+		D23EF0CB272D5062003E0AFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */; };
+		D23EF0CD272D5647003E0AFD /* TrendingReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */; };
+		D23EF0CF272D5A38003E0AFD /* FavoriteReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */; };
 		D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F7F22B272BEC24004D883E /* Assets.xcassets */; };
 		D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */; };
 		D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */; };
@@ -34,12 +41,19 @@
 /* Begin PBXFileReference section */
 		AD94457CFF63393EEDDB8B6A /* Pods-TrendingRepositories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingRepositories.debug.xcconfig"; path = "Target Support Files/Pods-TrendingRepositories/Pods-TrendingRepositories.debug.xcconfig"; sourceTree = "<group>"; };
 		B25D0101454DE53257D2641A /* Pods_TrendingRepositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrendingRepositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCollectionView.swift; sourceTree = "<group>"; };
+		D23EF0B4272C55C1003E0AFD /* ReposListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListController.swift; sourceTree = "<group>"; };
 		D23EF0B6272C92F6003E0AFD /* Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github.swift; sourceTree = "<group>"; };
 		D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		D23EF0BB272D3642003E0AFD /* RepoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23EF0BE272D37D0003E0AFD /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D23EF0C0272D3CE9003E0AFD /* CodableResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableResponses.swift; sourceTree = "<group>"; };
+		D23EF0C2272D413F003E0AFD /* RepoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoCollectionViewCell.xib; sourceTree = "<group>"; };
+		D23EF0C4272D486A003E0AFD /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		D23EF0C6272D48F8003E0AFD /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
+		D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataProvider.swift; sourceTree = "<group>"; };
+		D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposViewModel.swift; sourceTree = "<group>"; };
+		D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteReposViewModel.swift; sourceTree = "<group>"; };
 		D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		D2F38B55272C22F7009DE6D6 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -89,21 +103,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D23EF0B3272C5597003E0AFD /* Repos CollectionView */ = {
+		D23EF0B3272C5597003E0AFD /* Repos List */ = {
 			isa = PBXGroup;
 			children = (
-				D23EF0B4272C55C1003E0AFD /* ReposCollectionView.swift */,
+				D23EF0B4272C55C1003E0AFD /* ReposListController.swift */,
+				D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */,
 				D23EF0BD272D373E003E0AFD /* Repo Cell */,
 			);
-			path = "Repos CollectionView";
+			path = "Repos List";
 			sourceTree = "<group>";
 		};
 		D23EF0BD272D373E003E0AFD /* Repo Cell */ = {
 			isa = PBXGroup;
 			children = (
 				D23EF0BB272D3642003E0AFD /* RepoCollectionViewCell.swift */,
+				D23EF0C2272D413F003E0AFD /* RepoCollectionViewCell.xib */,
 			);
 			path = "Repo Cell";
+			sourceTree = "<group>";
+		};
+		D23EF0D0272D5A61003E0AFD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D2F38B4B272C1C1C009DE6D6 /* Main Tab Bar */,
+				D2F38B57272C2613009DE6D6 /* Trending Repos */,
+				D2F38B58272C2622009DE6D6 /* Favorite Repos */,
+				D23EF0B3272C5597003E0AFD /* Repos List */,
+				D2F38B59272C264E009DE6D6 /* Details Screen */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		D2F38B4B272C1C1C009DE6D6 /* Main Tab Bar */ = {
@@ -126,6 +154,7 @@
 		D2F38B50272C21CC009DE6D6 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0C6272D48F8003E0AFD /* ClassName.swift */,
 				D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */,
 			);
 			path = Foundation;
@@ -136,6 +165,7 @@
 			children = (
 				D2F38B64272C4234009DE6D6 /* UIView+Ext.swift */,
 				D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */,
+				D23EF0C4272D486A003E0AFD /* UICollectionView+Ext.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -151,6 +181,7 @@
 		D2F38B57272C2613009DE6D6 /* Trending Repos */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */,
 				D2F38B5E272C2F82009DE6D6 /* TrendingReposController.swift */,
 			);
 			path = "Trending Repos";
@@ -159,6 +190,7 @@
 		D2F38B58272C2622009DE6D6 /* Favorite Repos */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */,
 				D2F38B60272C2F90009DE6D6 /* FavoriteReposController.swift */,
 			);
 			path = "Favorite Repos";
@@ -229,11 +261,7 @@
 			children = (
 				D2F7F23A272BECDD004D883E /* Storyboards */,
 				D2F7F23F272BF4EA004D883E /* Navigation */,
-				D2F38B4B272C1C1C009DE6D6 /* Main Tab Bar */,
-				D2F38B57272C2613009DE6D6 /* Trending Repos */,
-				D2F38B58272C2622009DE6D6 /* Favorite Repos */,
-				D23EF0B3272C5597003E0AFD /* Repos CollectionView */,
-				D2F38B59272C264E009DE6D6 /* Details Screen */,
+				D23EF0D0272D5A61003E0AFD /* Controllers */,
 			);
 			path = "UI Layer";
 			sourceTree = "<group>";
@@ -266,6 +294,7 @@
 		D2F7F23C272BF202004D883E /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -340,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23EF0C3272D413F003E0AFD /* RepoCollectionViewCell.xib in Resources */,
 				D2F7F22F272BEC24004D883E /* LaunchScreen.storyboard in Resources */,
 				D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */,
 				D2F7F22A272BEC22004D883E /* Main.storyboard in Resources */,
@@ -396,21 +426,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2F7F223272BEC22004D883E /* AppDelegate.swift in Sources */,
+				D23EF0CB272D5062003E0AFD /* BaseViewModel.swift in Sources */,
+				D23EF0C9272D503D003E0AFD /* ReposDataProvider.swift in Sources */,
 				D2F38B56272C22F7009DE6D6 /* K.swift in Sources */,
+				D23EF0CF272D5A38003E0AFD /* FavoriteReposViewModel.swift in Sources */,
 				D2F38B5F272C2F82009DE6D6 /* TrendingReposController.swift in Sources */,
 				D2F7F225272BEC22004D883E /* SceneDelegate.swift in Sources */,
 				D23EF0BC272D3642003E0AFD /* RepoCollectionViewCell.swift in Sources */,
 				D23EF0B7272C92F6003E0AFD /* Github.swift in Sources */,
 				D2F38B5B272C28F7009DE6D6 /* TrendingCoordinator.swift in Sources */,
+				D23EF0CD272D5647003E0AFD /* TrendingReposViewModel.swift in Sources */,
 				D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */,
 				D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */,
-				D23EF0B5272C55C1003E0AFD /* ReposCollectionView.swift in Sources */,
+				D23EF0B5272C55C1003E0AFD /* ReposListController.swift in Sources */,
 				D23EF0B9272C98F7003E0AFD /* Date+Ext.swift in Sources */,
 				D2F7F23E272BF215004D883E /* Coordinator.swift in Sources */,
 				D23EF0BF272D37D0003E0AFD /* Repository.swift in Sources */,
 				D2F38B65272C4234009DE6D6 /* UIView+Ext.swift in Sources */,
 				D2F38B61272C2F90009DE6D6 /* FavoriteReposController.swift in Sources */,
 				D2F38B5D272C290C009DE6D6 /* FavoritesCoordinator.swift in Sources */,
+				D23EF0C5272D486A003E0AFD /* UICollectionView+Ext.swift in Sources */,
+				D23EF0C7272D48F8003E0AFD /* ClassName.swift in Sources */,
 				D2F7F241272BF597004D883E /* AppCoordinator.swift in Sources */,
 				D23EF0C1272D3CE9003E0AFD /* CodableResponses.swift in Sources */,
 			);
