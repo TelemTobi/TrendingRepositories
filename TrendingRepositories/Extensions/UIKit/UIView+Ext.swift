@@ -118,11 +118,17 @@ extension UIView {
 		view.layoutIfNeeded()
 
 		for subView in view.subviews {
-			self.animateShimmer(view: subView, start: start)
+			if subView.subviews.count > 0 && !(subView is UIStackView) {
+				self.addLoader(subView, start: start)
+			} else {
+				DispatchQueue.main.async { [weak self] in
+					self?.animateShimmer(view: subView, start: start)
+				}
+			}
 		}
 	}
 	
-	private func animateShimmer(view:UIView, start: Bool, repeatCount: Float = .infinity) {
+	private func animateShimmer(view: UIView, start: Bool, repeatCount: Float = .infinity) {
 		
 		if start {
 			

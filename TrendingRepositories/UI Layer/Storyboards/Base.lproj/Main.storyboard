@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="652" y="56"/>
         </scene>
-        <!--Favorite Repositories-->
+        <!--Bookmarks-->
         <scene sceneID="zCd-gE-Kmf">
             <objects>
-                <viewController storyboardIdentifier="FavoriteReposController" title="Favorite Repositories" extendedLayoutIncludesOpaqueBars="YES" id="iJx-X1-Oac" customClass="FavoriteReposController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteReposController" title="Bookmarks" extendedLayoutIncludesOpaqueBars="YES" id="iJx-X1-Oac" customClass="FavoriteReposController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YFM-43-fl1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                             <constraint firstItem="RrH-q7-A2x" firstAttribute="bottom" secondItem="ZnO-jt-q7y" secondAttribute="bottom" id="sc5-no-pqg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Feb-hK-dOI"/>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Feb-hK-dOI"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

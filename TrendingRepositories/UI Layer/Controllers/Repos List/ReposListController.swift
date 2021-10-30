@@ -78,6 +78,7 @@ extension ReposListController {
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		
 	}
+	
 }
 
 //	MARK: - CollectionView DataSource
@@ -98,6 +99,13 @@ extension ReposListController {
 		let searchBarHeader = collectionView.dequeueReusableView(with: SearchBarHeader.self, for: indexPath)
 		searchBarHeader.delegate = self
 		return searchBarHeader
+	}
+}
+
+extension ReposListController: UICollectionViewDelegateFlowLayout {
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		CGSize(width: collectionView.frame.width, height: 77)
 	}
 }
 

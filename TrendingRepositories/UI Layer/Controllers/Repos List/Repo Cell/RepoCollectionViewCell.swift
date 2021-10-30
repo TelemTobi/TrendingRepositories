@@ -8,8 +8,6 @@
 import UIKit
 
 class RepoCollectionViewCell: UICollectionViewCell {
-
-	@IBOutlet private weak var containerView: UIStackView!
 	
 	@IBOutlet private weak var avatarImageView: UIImageView!
 	@IBOutlet private weak var fullNameLabel: UILabel!
@@ -18,22 +16,22 @@ class RepoCollectionViewCell: UICollectionViewCell {
 	@IBOutlet private weak var languageView: UIStackView!
 	@IBOutlet private weak var languageLabel: UILabel!
 	
-	@IBOutlet private weak var bookmarkButton: UIButton!
+//	@IBOutlet private weak var bookmarkButton: UIButton!
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
 		avatarImageView.image = nil
-		bookmarkButton.isHidden = false
+//		bookmarkButton.isHidden = false
 	}
 	
 	func configure(with dataProvider: ReposDataProvider, _ indexPath: IndexPath) {
 		guard !dataProvider.isLoading else {
-			bookmarkButton.isHidden = true
-			containerView.smartShimmer()
+//			bookmarkButton.isHidden = true
+			contentView.smartShimmer()
 			return
 		}
-		containerView.stopSmartShimmer()
+		contentView.stopSmartShimmer()
 		configure(with: dataProvider.repo(for: indexPath))
 	}
 	
