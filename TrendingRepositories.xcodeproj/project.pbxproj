@@ -24,6 +24,7 @@
 		D23EF0D4272D6559003E0AFD /* SearchBarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D3272D6559003E0AFD /* SearchBarHeader.swift */; };
 		D23EF0D6272D6577003E0AFD /* SearchBarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EF0D5272D6577003E0AFD /* SearchBarHeader.xib */; };
 		D23EF0DA272D72EC003E0AFD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */; };
+		D24E1644272D8F1400916729 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1643272D8F1400916729 /* UserDefaults.swift */; };
 		D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2F7F22B272BEC24004D883E /* Assets.xcassets */; };
 		D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */; };
 		D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */; };
@@ -60,6 +61,7 @@
 		D23EF0D3272D6559003E0AFD /* SearchBarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarHeader.swift; sourceTree = "<group>"; };
 		D23EF0D5272D6577003E0AFD /* SearchBarHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarHeader.xib; sourceTree = "<group>"; };
 		D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		D24E1643272D8F1400916729 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D2F38B4C272C1C44009DE6D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D2F38B52272C21EF009DE6D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		D2F38B55272C22F7009DE6D6 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				D23EF0C6272D48F8003E0AFD /* ClassName.swift */,
 				D23EF0B8272C98F7003E0AFD /* Date+Ext.swift */,
+				D24E1643272D8F1400916729 /* UserDefaults.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				D2F38B61272C2F90009DE6D6 /* FavoriteReposController.swift in Sources */,
 				D2F38B5D272C290C009DE6D6 /* FavoritesCoordinator.swift in Sources */,
 				D23EF0C5272D486A003E0AFD /* UICollectionView+Ext.swift in Sources */,
+				D24E1644272D8F1400916729 /* UserDefaults.swift in Sources */,
 				D23EF0C7272D48F8003E0AFD /* ClassName.swift in Sources */,
 				D2F7F241272BF597004D883E /* AppCoordinator.swift in Sources */,
 				D23EF0C1272D3CE9003E0AFD /* CodableResponses.swift in Sources */,

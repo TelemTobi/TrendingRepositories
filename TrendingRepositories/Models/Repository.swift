@@ -54,3 +54,10 @@ extension Repository {
 		}
 	}
 }
+
+extension Repository: Equatable {
+	
+	static func == (lhs: Repository, rhs: Repository) -> Bool {
+		return lhs.id == rhs.id
+	}
+}

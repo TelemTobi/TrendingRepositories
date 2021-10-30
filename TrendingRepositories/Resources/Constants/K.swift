@@ -16,4 +16,9 @@ struct K {
 	enum Message {
 		static let networkError = "A network error has occured"
 	}
+	
+	enum Image {
+		static let bookmark = "bookmark"
+		static let bookmarkFill = "bookmark.fill"
+	}
 }
