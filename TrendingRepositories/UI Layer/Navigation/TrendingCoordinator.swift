@@ -14,7 +14,6 @@ class TrendingCoordinator: Coordinator {
 	
 	init() {
 		rootViewController = UINavigationController()
-		rootViewController.navigationBar.prefersLargeTitles = true
 	}
 	
 	func start() {

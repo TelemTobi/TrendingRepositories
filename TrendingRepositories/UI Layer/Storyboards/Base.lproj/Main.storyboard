@@ -34,17 +34,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-8K-rr1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="135" width="414" height="678"/>
                                 <connections>
                                     <segue destination="gBF-x5-GM6" kind="embed" id="Ip4-OD-bf8"/>
                                 </connections>
                             </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7rT-6w-gUZ">
+                                <rect key="frame" x="16" y="96" width="382" height="32"/>
+                                <segments>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HgV-eh-Vcq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HgV-eh-Vcq" firstAttribute="trailing" secondItem="QXs-8K-rr1" secondAttribute="trailing" id="AGG-Yu-yCi"/>
-                            <constraint firstItem="QXs-8K-rr1" firstAttribute="top" secondItem="HgV-eh-Vcq" secondAttribute="top" id="LyG-5A-jSm"/>
+                            <constraint firstItem="QXs-8K-rr1" firstAttribute="top" secondItem="7rT-6w-gUZ" secondAttribute="bottom" constant="8" id="LyG-5A-jSm"/>
+                            <constraint firstItem="7rT-6w-gUZ" firstAttribute="top" secondItem="HgV-eh-Vcq" secondAttribute="top" constant="8" id="lsm-mP-xbf"/>
+                            <constraint firstItem="HgV-eh-Vcq" firstAttribute="trailing" secondItem="7rT-6w-gUZ" secondAttribute="trailing" constant="16" id="nrq-HF-H78"/>
+                            <constraint firstItem="7rT-6w-gUZ" firstAttribute="leading" secondItem="HgV-eh-Vcq" secondAttribute="leading" constant="16" id="r3H-3A-TdY"/>
                             <constraint firstItem="QXs-8K-rr1" firstAttribute="leading" secondItem="HgV-eh-Vcq" secondAttribute="leading" id="u6Q-i9-hAQ"/>
                             <constraint firstItem="HgV-eh-Vcq" firstAttribute="bottom" secondItem="QXs-8K-rr1" secondAttribute="bottom" id="voI-X3-hs2"/>
                         </constraints>
@@ -94,23 +105,24 @@
             <objects>
                 <collectionViewController id="gBF-x5-GM6" customClass="ReposCollectionViewController" customModule="TrendingRepositories" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="rHl-4r-b6O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Go2-az-Qky">
-                            <size key="itemSize" width="128" height="128"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="Go2-az-Qky">
+                            <size key="itemSize" width="414" height="125"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FhE-33-nIv">
-                                <rect key="frame" x="0.0" y="50" width="128" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FhE-33-nIv" customClass="RepoCollectionViewCell" customModule="TrendingRepositories" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="414" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WAG-dp-d6z">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="414" height="125"/>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchBarHeader" id="lUB-Dr-VwQ">
@@ -119,9 +131,6 @@
                             <subviews>
                                 <searchBar contentMode="redraw" placeholder="Looking for anything specific?" translatesAutoresizingMaskIntoConstraints="NO" id="2Iw-sM-85A">
                                     <rect key="frame" x="0.0" y="4" width="414" height="42"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="ooY-ch-ZA9"/>
-                                    </constraints>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="gBF-x5-GM6" id="QJT-58-Mf1"/>
@@ -143,7 +152,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aic-Oz-I2U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="730"/>
+            <point key="canvasLocation" x="1018.840579710145" y="732.58928571428567"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

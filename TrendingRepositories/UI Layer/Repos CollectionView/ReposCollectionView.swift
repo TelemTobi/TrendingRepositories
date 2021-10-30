@@ -9,7 +9,9 @@ import UIKit
 
 class ReposCollectionViewController: UICollectionViewController {
 	
-	let searchBarHeaderID = "SearchBarHeader"
+	private let searchBarHeaderID = "SearchBarHeader"
+	
+	var headerView = UICollectionReusableView()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -18,13 +20,16 @@ class ReposCollectionViewController: UICollectionViewController {
 	}
 	
 	private func setupCollectionLayout() {
-		var config = UICollectionLayoutListConfiguration(appearance: .grouped)
+		var config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
 		config.showsSeparators = false
 		config.headerMode = .supplementary
 		config.backgroundColor = .systemBackground
+		config.headerTopPadding = 0
+		
 		let layout = UICollectionViewCompositionalLayout.list(using: config)
 		collectionView.collectionViewLayout = layout
 		
+		// temporary
 		collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 	}
 }
@@ -49,10 +54,6 @@ extension ReposCollectionViewController {
 //	MARK: - CollectionView DataSource
 
 extension ReposCollectionViewController {
-	
-	override func numberOfSections(in collectionView: UICollectionView) -> Int {
-		1
-	}
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		20
