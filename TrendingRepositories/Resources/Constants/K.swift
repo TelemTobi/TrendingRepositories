@@ -21,6 +21,9 @@ struct K {
 	enum Image {
 		static let bookmark = "bookmark"
 		static let bookmarkFill = "bookmark.fill"
+		static let info = "info.circle"
+		static let link = "link"
+		static let person = "person"
 	}
 	
 	enum NotificationName {
@@ -31,7 +34,13 @@ struct K {
 		case yyyyMMdd = "yyyy/MM/dd"
 	}
 	
-	static let Title: [TimeFrame: String] = [
+	enum ContextAction {
+		static let moreDetails = "More details"
+		static let openInGithub = "Open in Github"
+		static let viewProfile = "View user profile"
+	}
+	
+	static let TimeFrameTitle: [TimeFrame: String] = [
 		.week: "Trending this week",
 		.month: "Trending this month",
 		.year: "Trending this year"

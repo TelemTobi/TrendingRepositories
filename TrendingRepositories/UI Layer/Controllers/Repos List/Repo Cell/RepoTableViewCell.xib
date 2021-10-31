@@ -82,7 +82,17 @@
                     <constraint firstItem="fKv-Y8-k5F" firstAttribute="leading" secondItem="EoU-H6-elS" secondAttribute="trailing" constant="16" id="vpf-iV-qhn"/>
                     <constraint firstItem="fKv-Y8-k5F" firstAttribute="centerY" secondItem="Qmm-Jt-jRa" secondAttribute="centerY" id="wXV-hX-zhz"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="5"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="avatarImageView" destination="Qmm-Jt-jRa" id="9nn-er-rQ1"/>
                 <outlet property="bookmarkButton" destination="fKv-Y8-k5F" id="OXW-zi-auT"/>

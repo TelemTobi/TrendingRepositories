@@ -22,7 +22,7 @@ class ReposListViewModel: BaseViewModel {
 	private var searchWorkItem: DispatchWorkItem!
 
 	var currentPage: Int = 1
-	var pageTitle: String { K.Title[selectedTimeFrame] ?? "" }
+	var pageTitle: String { K.TimeFrameTitle[selectedTimeFrame] ?? "" }
 	
 	init(timeFrame: TimeFrame, initialData: [Repository]) {
 		super.init()

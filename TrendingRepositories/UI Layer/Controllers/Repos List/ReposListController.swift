@@ -58,25 +58,6 @@ class ReposListController: UITableViewController {
 	}
 }
 
-//	MARK: - TableView Delegate
-
-extension ReposListController {
-
-	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let repository = viewModel?.repo(for: indexPath) else { return }
-		coordinator?.pushRepoDetailsController(repository)
-	}
-	
-	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		navigationController?.view.endEditing(true)
-		
-		if viewModel?.isLoading != true, tableView.reachedEnd(offset: 150) {
-			viewModel?.loadMoreResults()
-		}
-	}
-}
-
 //	MARK: - TableView DataSource
 
 extension ReposListController {
@@ -89,6 +70,24 @@ extension ReposListController {
 		let cell = tableView.dequeueReusableCell(with: RepoTableViewCell.self, for: indexPath)
 		cell.configure(with: viewModel, indexPath)
 		return cell
+	}
+}
+
+//	MARK: - TableView Delegate
+
+extension ReposListController {
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let repository = viewModel?.repo(for: indexPath) else { return }
+		coordinator?.pushRepoDetailsController(repository)
+	}
+	
+	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		navigationController?.view.endEditing(true)
+		
+		if viewModel?.isLoading != true, tableView.reachedEnd(offset: 150) {
+			viewModel?.loadMoreResults()
+		}
 	}
 }
 

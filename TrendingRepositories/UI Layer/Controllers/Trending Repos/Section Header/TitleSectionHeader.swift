@@ -14,7 +14,7 @@ class TitleSectionHeader: UICollectionReusableView {
 	var buttonTapCallback: (() -> Void)?
 	
 	func configure(timeFrame: TimeFrame) {
-		titleLabel.text = K.Title[timeFrame]
+		titleLabel.text = K.TimeFrameTitle[timeFrame]
 	}
 	
 	@IBAction func seeAllButtonTapped(_ sender: Any) {

@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qqt-T6-2Qu">
-                        <rect key="frame" x="0.0" y="8" width="50" height="50"/>
+                        <rect key="frame" x="4" y="8" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="4MR-I9-pPh"/>
                             <constraint firstAttribute="width" constant="50" id="yH6-3P-vB6"/>
@@ -31,16 +31,16 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyi-TE-IEK">
-                        <rect key="frame" x="62" y="11" width="321" height="44.5"/>
+                        <rect key="frame" x="66" y="11" width="317" height="44.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrQ-Z4-IYl">
-                                <rect key="frame" x="0.0" y="0.0" width="321" height="19.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="317" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yul-Ao-JR4">
-                                <rect key="frame" x="0.0" y="27.5" width="160.5" height="17"/>
+                                <rect key="frame" x="0.0" y="27.5" width="158.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="b4x-DK-Yt9">
-                        <rect key="frame" x="50" y="66" width="389" height="1"/>
+                        <rect key="frame" x="54" y="66" width="385" height="1"/>
                         <color key="backgroundColor" systemColor="separatorColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="3ij-vD-44C"/>
@@ -88,15 +88,25 @@
                     <constraint firstItem="vVe-oo-nPh" firstAttribute="centerY" secondItem="Qqt-T6-2Qu" secondAttribute="centerY" id="DTR-JD-hR5"/>
                     <constraint firstAttribute="trailing" secondItem="b4x-DK-Yt9" secondAttribute="trailing" id="K4d-3V-s06"/>
                     <constraint firstItem="tyi-TE-IEK" firstAttribute="centerY" secondItem="Qqt-T6-2Qu" secondAttribute="centerY" id="PJ9-sY-GXj"/>
-                    <constraint firstItem="Qqt-T6-2Qu" firstAttribute="leading" secondItem="QBT-Zl-nG6" secondAttribute="leading" id="PMH-xD-5fc"/>
+                    <constraint firstItem="Qqt-T6-2Qu" firstAttribute="leading" secondItem="QBT-Zl-nG6" secondAttribute="leading" constant="4" id="PMH-xD-5fc"/>
                     <constraint firstItem="Qqt-T6-2Qu" firstAttribute="top" secondItem="QBT-Zl-nG6" secondAttribute="top" constant="8" id="cmk-J8-g8E"/>
                     <constraint firstItem="b4x-DK-Yt9" firstAttribute="leading" secondItem="Qqt-T6-2Qu" secondAttribute="trailing" id="lrN-9a-2uS"/>
                     <constraint firstAttribute="trailing" secondItem="vVe-oo-nPh" secondAttribute="trailing" id="oMe-gD-NwL"/>
                     <constraint firstAttribute="bottom" secondItem="Qqt-T6-2Qu" secondAttribute="bottom" constant="9" id="suC-bs-MoY"/>
                     <constraint firstAttribute="bottom" secondItem="b4x-DK-Yt9" secondAttribute="bottom" id="zKM-OG-8Ho"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="5"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </collectionViewCellContentView>
             <size key="customSize" width="439" height="83"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="avatarImageView" destination="Qqt-T6-2Qu" id="nnZ-Q7-ION"/>
                 <outlet property="bookmarkButton" destination="vVe-oo-nPh" id="Xjz-QD-iSM"/>

@@ -27,7 +27,7 @@ class TrendingReposController: UIViewController {
 		viewModel.fetchTrendingRepos()
 	}
 	
-//	MARK: - Setup Methods
+	//	MARK: - Setup Methods
 	
 	private func setupCollectionView() {
 		let layout = TrendingReposLayout.create()
@@ -99,5 +99,34 @@ extension TrendingReposController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		guard let repository = viewModel.repo(for: indexPath) else { return }
 		coordinator?.pushRepoDetailsController(repository)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+		
+		guard let repository = viewModel.repo(for: indexPath) else { return nil }
+		let identifier = "\(indexPath.section)\(indexPath.item)" as NSString
+		
+		return UIContextMenuConfiguration(
+			identifier: identifier,
+			previewProvider: nil) { _ in
+				
+				let detailsAction = UIAction(
+					title: K.ContextAction.moreDetails,
+					image: UIImage(systemName: K.Image.info)) { [weak self] _ in
+						self?.coordinator?.pushRepoDetailsController(repository)
+					}
+				let githubAction = UIAction(
+					title: K.ContextAction.openInGithub,
+					image: UIImage(systemName: K.Image.link)) { [weak self] _ in
+						self?.coordinator?.presentSafariController(with: repository.url)
+					}
+				let profileAction = UIAction(
+					title: K.ContextAction.viewProfile,
+					image: UIImage(systemName: K.Image.person)) { [weak self] _ in
+						self?.coordinator?.presentSafariController(with: repository.owner.profileUrl)
+					}
+				
+				return UIMenu(title: "", image: nil, children: [detailsAction, githubAction, profileAction])
+		}
 	}
 }
