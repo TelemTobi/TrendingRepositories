@@ -19,7 +19,7 @@ class TrendingReposLayout {
 			let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 			let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
 			
-			let containerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85),  heightDimension: .absolute(225))
+			let containerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9),  heightDimension: .absolute(225))
 			let containerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: containerGroupSize, subitems: [group])
 			containerGroup.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 24)
   

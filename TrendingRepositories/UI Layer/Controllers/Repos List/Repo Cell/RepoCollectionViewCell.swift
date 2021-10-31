@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol ReposDataProvider: BaseViewModel {
+	
+	func numberOfItems(in section: Int) -> Int
+	func repo(for indexPath: IndexPath) -> Repository?
+	func isLoadingSection(_ section: Int) -> Bool
+}
+
 class RepoCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet private weak var avatarImageView: UIImageView!
@@ -57,5 +64,6 @@ class RepoCollectionViewCell: UICollectionViewCell {
 		}
 		
 		bookmarkButton.isSelected = !bookmarkButton.isSelected
+		NotificationCenter.default.post(name: K.NotificationName.bookmarksChange, object: nil)
 	}
 }

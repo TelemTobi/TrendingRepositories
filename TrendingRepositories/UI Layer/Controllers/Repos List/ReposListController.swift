@@ -13,16 +13,12 @@ class ReposListController: UICollectionViewController {
 	private let viewModel: ReposListViewModel
 	private var subscriptions = Set<AnyCancellable>()
 	
-	private weak var showingToast: ToastView?
-	
 	init(viewModel: ReposListViewModel) {
 		self.viewModel = viewModel
 		
 		let config = UICollectionLayoutListConfiguration.baseConfiguration
 		let layout = UICollectionViewCompositionalLayout.list(using: config)
 		super.init(collectionViewLayout: layout)
-		
-		navigationItem.title = viewModel.pageTitle
 	}
 	
 	required init?(coder: NSCoder) {
@@ -49,14 +45,15 @@ class ReposListController: UICollectionViewController {
 	private func registerSubscribers() {
 		viewModel.isLoadingPublisher
 			.sink { [weak self] _ in
-				self?.collectionView.reloadData()
-				self?.showingToast?.dismiss()
+				DispatchQueue.main.async {
+					self?.collectionView.animatedReload()
+				}
 			}
 			.store(in: &subscriptions)
 		
 		viewModel.errorMsgPublisher
-			.sink(receiveValue: { [weak self] in
-				self?.showToast(with: $0, duration: .short)
+			.sink(receiveValue: { [weak self] message in
+				self?.showToast(with: message, duration: .short)
 			})
 			.store(in: &subscriptions)
 	}
@@ -71,8 +68,9 @@ extension ReposListController {
 	}
 	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		navigationController?.view.endEditing(true)
+		
 		if !viewModel.isLoading, collectionView.reachedEnd(offset: 50) {
-			showingToast = showToast(with: K.Message.loadingMore, duration: .fixed)
 			viewModel.loadMoreResults()
 		}
 	}
@@ -83,7 +81,7 @@ extension ReposListController {
 extension ReposListController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		viewModel.numberOfItems(in: section)
+		return viewModel.numberOfItems(in: section)
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,6 +103,10 @@ extension ReposListController {
 extension ReposListController: UISearchBarDelegate {
 	
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		
+		navigationController?.view.endEditing(true)
+	}
+	
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		viewModel.executeSearch(text: searchText)
 	}
 }

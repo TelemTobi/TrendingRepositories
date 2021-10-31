@@ -20,7 +20,6 @@
 		D23EF0C3272D413F003E0AFD /* RepoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23EF0C2272D413F003E0AFD /* RepoCollectionViewCell.xib */; };
 		D23EF0C5272D486A003E0AFD /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C4272D486A003E0AFD /* UICollectionView+Ext.swift */; };
 		D23EF0C7272D48F8003E0AFD /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C6272D48F8003E0AFD /* ClassName.swift */; };
-		D23EF0C9272D503D003E0AFD /* ReposDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */; };
 		D23EF0CB272D5062003E0AFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */; };
 		D23EF0CD272D5647003E0AFD /* TrendingReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */; };
 		D23EF0CF272D5A38003E0AFD /* FavoriteReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */; };
@@ -64,7 +63,6 @@
 		D23EF0C2272D413F003E0AFD /* RepoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoCollectionViewCell.xib; sourceTree = "<group>"; };
 		D23EF0C4272D486A003E0AFD /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		D23EF0C6272D48F8003E0AFD /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
-		D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataProvider.swift; sourceTree = "<group>"; };
 		D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposViewModel.swift; sourceTree = "<group>"; };
 		D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteReposViewModel.swift; sourceTree = "<group>"; };
@@ -139,10 +137,8 @@
 			children = (
 				D2C350B8272E91CC007BBB51 /* ReposListViewModel.swift */,
 				D23EF0B4272C55C1003E0AFD /* ReposListController.swift */,
-				D23EF0C8272D503D003E0AFD /* ReposDataProvider.swift */,
 				D23EF0BD272D373E003E0AFD /* Repo Cell */,
 				D23EF0D2272D6546003E0AFD /* SearchBar Header */,
-				D20F64CB272E7D860083D74C /* Title Section Header */,
 			);
 			path = "Repos List";
 			sourceTree = "<group>";
@@ -246,6 +242,7 @@
 			children = (
 				D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */,
 				D2F38B5E272C2F82009DE6D6 /* TrendingReposController.swift */,
+				D20F64CB272E7D860083D74C /* Title Section Header */,
 			);
 			path = "Trending Repos";
 			sourceTree = "<group>";
@@ -495,7 +492,6 @@
 			files = (
 				D2F7F223272BEC22004D883E /* AppDelegate.swift in Sources */,
 				D23EF0CB272D5062003E0AFD /* BaseViewModel.swift in Sources */,
-				D23EF0C9272D503D003E0AFD /* ReposDataProvider.swift in Sources */,
 				D2F38B56272C22F7009DE6D6 /* K.swift in Sources */,
 				D2C350B9272E91CC007BBB51 /* ReposListViewModel.swift in Sources */,
 				D23EF0CF272D5A38003E0AFD /* FavoriteReposViewModel.swift in Sources */,

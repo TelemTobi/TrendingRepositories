@@ -14,6 +14,7 @@ class TrendingCoordinator: Coordinator {
 	
 	init() {
 		rootViewController = UINavigationController()
+		rootViewController.navigationBar.prefersLargeTitles = true
 	}
 	
 	func start() {
@@ -26,6 +27,7 @@ class TrendingCoordinator: Coordinator {
 		let initialData = viewModel.repos(for: timeFrame)
 		let viewModel = ReposListViewModel(timeFrame: timeFrame, initialData: initialData)
 		let reposListController = ReposListController(viewModel: viewModel)
+		reposListController.navigationItem.title = viewModel.pageTitle
 		rootViewController.pushViewController(reposListController, animated: true)
 	}
 }

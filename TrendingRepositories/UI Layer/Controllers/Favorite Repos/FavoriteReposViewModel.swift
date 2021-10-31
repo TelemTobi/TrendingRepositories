@@ -7,15 +7,17 @@
 
 import Foundation
 
-class FavoriteReposViewModel: BaseViewModel {
+class FavoriteReposViewModel: ReposListViewModel {
 	
-	private var repos: [Repository] = []
-	
-	func numberOfItems(in section: Int) -> Int {
-		5
+	init() {
+		super.init(timeFrame: .week, initialData: UserDefaults.bookmarkedRepos)
+		reloadData()
 	}
 	
-	func repo(for indexPath: IndexPath) -> Repository? {
-		return repos[indexPath.item]
+	func reloadData() {
+		repos = UserDefaults.bookmarkedRepos
+		isLoadingPublisher.value = false
 	}
+	
+	override func loadMoreResults() {}
 }

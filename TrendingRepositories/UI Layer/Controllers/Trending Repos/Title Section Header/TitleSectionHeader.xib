@@ -14,16 +14,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H7q-wd-QVc">
-                    <rect key="frame" x="16" y="8" width="382" height="93"/>
+                    <rect key="frame" x="8" y="8" width="398" height="93"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Trending this week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nps-Mx-UnU">
-                            <rect key="frame" x="0.0" y="32" width="335" height="29"/>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                            <rect key="frame" x="0.0" y="34.5" width="348" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvZ-H2-VxL">
-                            <rect key="frame" x="335" y="31.5" width="47" height="30"/>
+                            <rect key="frame" x="348" y="30.5" width="50" height="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="See All"/>
                             <connections>
@@ -36,9 +37,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="H7q-wd-QVc" secondAttribute="bottom" constant="8" id="L8X-13-2f5"/>
-                <constraint firstAttribute="trailing" secondItem="H7q-wd-QVc" secondAttribute="trailing" constant="16" id="Pch-bO-lCd"/>
+                <constraint firstAttribute="trailing" secondItem="H7q-wd-QVc" secondAttribute="trailing" constant="8" id="Pch-bO-lCd"/>
                 <constraint firstItem="H7q-wd-QVc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="com-Ml-2RN"/>
-                <constraint firstItem="H7q-wd-QVc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="fBI-vT-zoH"/>
+                <constraint firstItem="H7q-wd-QVc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="fBI-vT-zoH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

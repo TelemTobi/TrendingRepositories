@@ -16,10 +16,6 @@ class TrendingReposViewModel: BaseViewModel {
 	
 	var isLoadingSection = CurrentValueSubject<[Bool], Never>([Bool](repeating: false, count: 3))
 	
-	func isLoadingSection(_ section: Int) -> Bool {
-		return isLoadingSection.value[section]
-	}
-	
 	func repos(for timeFrame: TimeFrame) -> [Repository] {
 		return repos[timeFrame] ?? []
 	}
@@ -54,6 +50,10 @@ class TrendingReposViewModel: BaseViewModel {
 }
 	
 extension TrendingReposViewModel: ReposDataProvider {
+	
+	func isLoadingSection(_ section: Int) -> Bool {
+		return isLoadingSection.value[section]
+	}
 	
 	func numberOfItems(in section: Int) -> Int {
 		let timeFrame = TimeFrame(rawValue: section) ?? .week

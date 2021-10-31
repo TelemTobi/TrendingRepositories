@@ -14,7 +14,6 @@ class MainTabBarController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		hideKeyboardWhenTappedAround()
 		viewControllers = coordinator?.childCoordinators.map { $0.rootViewController }
 	}
 }

@@ -50,6 +50,13 @@ class TrendingReposController: UIViewController {
 				self?.collectionView.animatedReload()
 			})
 			.store(in: &subscriptions)
+		
+		NotificationCenter.default
+			.publisher(for: K.NotificationName.bookmarksChange, object: nil)
+			.sink(receiveValue: { [weak self] _ in
+				self?.collectionView.animatedReload()
+			})
+			.store(in: &subscriptions)
 	}
 }
 

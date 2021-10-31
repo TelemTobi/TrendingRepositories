@@ -12,11 +12,15 @@ import Moya
 class ReposListViewModel: BaseViewModel {
 
 	private let provider = MoyaProvider<Github>()
-	private var selectedTimeFrame: TimeFrame = .week
-	private var repos: [Repository] = []
+	var repos: [Repository] = []
 	
-	var isLoadingMorePublisher = CurrentValueSubject<Bool, Never>(false)
-	var currentPage: Int = 1
+	private var selectedTimeFrame: TimeFrame = .week
+	private var currentPage: Int = 1
+	
+	private var searchText: String = ""
+	private var filteredRepos: [Repository] = []
+	private var isSearchActive: Bool { searchText.count > 1 }
+	private var searchWorkItem: DispatchWorkItem!
 	
 	var pageTitle: String { K.Title[selectedTimeFrame] ?? "" }
 	
@@ -25,7 +29,20 @@ class ReposListViewModel: BaseViewModel {
 		
 		selectedTimeFrame = timeFrame
 		repos = initialData
+		
+		setupSearchWorkItem()
 	}
+	
+	private func setupSearchWorkItem() {
+		searchWorkItem = DispatchWorkItem(block: { [weak self] in
+			guard let self = self else { return }
+			
+			self.filteredRepos = self.repos.filter({ $0.fullName.contains(self.searchText) })
+			self.isLoadingPublisher.value = false
+		})
+	}
+	
+//	MARK: - Private Methods
 	
 	private func fetchRepos(timeFrame: TimeFrame, page: Int = 1) {
 		selectedTimeFrame = timeFrame
@@ -55,6 +72,8 @@ class ReposListViewModel: BaseViewModel {
 		}
 	}
 	
+//	MARK: - Public Methods
+	
 	func loadMoreResults() {
 		isLoadingPublisher.value = true
 		fetchRepos(timeFrame: selectedTimeFrame, page: currentPage + 1)
@@ -68,10 +87,21 @@ extension ReposListViewModel: ReposDataProvider {
 	}
 	
 	func numberOfItems(in section: Int) -> Int {
-		return repos.count
+		return isSearchActive ? filteredRepos.count : repos.count
 	}
 	
 	func repo(for indexPath: IndexPath) -> Repository? {
-		return repos[indexPath.item]
+		return isSearchActive ? filteredRepos[indexPath.item] : repos[indexPath.item]
+	}
+	
+	func executeSearch(text: String) {
+		self.searchText = text
+		
+		guard isSearchActive else {
+			isLoadingPublisher.value = false
+			return
+		}
+		
+		DispatchQueue.global(qos: .userInitiated).async(execute: searchWorkItem)
 	}
 }
