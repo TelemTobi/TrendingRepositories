@@ -10,13 +10,12 @@ import Combine
 
 class TrendingReposController: UIViewController {
 	
+	@IBOutlet private weak var listContainerView: UIView!
+	
 	weak var coordinator: TrendingCoordinator?
 	
 	private let viewModel = TrendingReposViewModel()
 	private var subscriptions = Set<AnyCancellable>()
-	
-	@IBOutlet private weak var listContainerView: UIView!
-	
 	private var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {

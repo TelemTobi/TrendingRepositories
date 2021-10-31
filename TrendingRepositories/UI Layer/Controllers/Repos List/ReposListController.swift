@@ -11,7 +11,7 @@ import Combine
 class ReposListController: UITableViewController {
 	
 	var viewModel: ReposListViewModel?
-	var coordinator: TabBarEmbeddedCoordinator?
+	weak var coordinator: TabBarEmbeddedCoordinator?
 	
 	private var subscriptions = Set<AnyCancellable>()
 	

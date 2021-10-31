@@ -19,7 +19,7 @@ class RepoDetailsController: UIViewController {
 	@IBOutlet private weak var issuesLabel: UILabel!
 	@IBOutlet private weak var dateLabel: UILabel!
 	
-	var coordinator: TabBarEmbeddedCoordinator?
+	weak var coordinator: TabBarEmbeddedCoordinator?
 	var viewModel: RepoDetailsViewModel?
 	
 	override func viewDidLoad() {
@@ -34,6 +34,8 @@ class RepoDetailsController: UIViewController {
 		navigationController?.hero.isEnabled = false
 	}
 	
+//	MARK: - Setup Methods
+	
 	private func setupElements() {
 		avatarImageView.setImage(with: viewModel?.avatarUrl ?? "")
 		avatarImageView.heroID = viewModel?.repository.heroID
@@ -47,6 +49,8 @@ class RepoDetailsController: UIViewController {
 		issuesLabel.text = viewModel?.issues
 		dateLabel.text = viewModel?.creationDate
 	}
+	
+//	MARK: - Interface Builder Actions
 	
 	@IBAction func githubButtonTapped(_ sender: Any) {
 		coordinator?.presentSafariController(with: viewModel?.githubUrl)

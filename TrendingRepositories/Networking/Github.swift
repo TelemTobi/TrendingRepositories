@@ -8,31 +8,6 @@
 import Foundation
 import Moya
 
-public enum TimeFrame: Int {
-	case week = 0
-	case month = 1
-	case year = 2
-}
-
-extension TimeFrame {
-	var dateString: String {
-		var timeComponent: Calendar.Component
-		
-		switch self {
-		case .week: timeComponent = .weekOfMonth
-		case .month: timeComponent = .month
-		case .year: timeComponent = .year
-		}
-		
-		let date = Calendar.current.date(
-			byAdding: timeComponent,
-			value: -1,
-			to: Date()
-		) ?? Date()
-		return date.toString()
-	}
-}
-
 public enum Github {
 	case searchRepositories(TimeFrame, Int)
 }
@@ -63,7 +38,7 @@ extension Github: TargetType {
 					"q": "created:>=\(timeFrame.dateString)",
 					"sort": "stars",
 					"order": "desc",
-					"per_page": "50",
+					"per_page": "100",
 					"page": "\(page)"
 				],
 				encoding: URLEncoding.default
@@ -77,5 +52,30 @@ extension Github: TargetType {
 	
 	public var validationType: ValidationType {
 		return .successCodes
+	}
+}
+
+public enum TimeFrame: Int {
+	case week = 0
+	case month = 1
+	case year = 2
+}
+
+extension TimeFrame {
+	var dateString: String {
+		var timeComponent: Calendar.Component
+		
+		switch self {
+		case .week: timeComponent = .weekOfMonth
+		case .month: timeComponent = .month
+		case .year: timeComponent = .year
+		}
+		
+		let date = Calendar.current.date(
+			byAdding: timeComponent,
+			value: -1,
+			to: Date()
+		) ?? Date()
+		return date.toString()
 	}
 }

@@ -33,6 +33,8 @@ class ReposListViewModel: BaseViewModel {
 		setupSearchWorkItem()
 	}
 	
+//	MARK: - Setup Methods
+	
 	private func setupSearchWorkItem() {
 		searchWorkItem = DispatchWorkItem(block: { [weak self] in
 			guard let self = self else { return }
@@ -77,6 +79,8 @@ class ReposListViewModel: BaseViewModel {
 //	MARK: - Public Methods
 	
 	func loadMoreResults() {
+		guard !isSearchActive else { return }
+		
 		isLoadingPublisher.value = true
 		fetchRepos(timeFrame: selectedTimeFrame, page: currentPage + 1)
 	}

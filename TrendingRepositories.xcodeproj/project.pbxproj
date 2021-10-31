@@ -133,13 +133,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D20F64CB272E7D860083D74C /* Title Section Header */ = {
+		D20F64CB272E7D860083D74C /* Section Header */ = {
 			isa = PBXGroup;
 			children = (
 				D20F64CC272E7DAA0083D74C /* TitleSectionHeader.swift */,
 				D20F64CE272E7DDC0083D74C /* TitleSectionHeader.xib */,
 			);
-			path = "Title Section Header";
+			path = "Section Header";
 			sourceTree = "<group>";
 		};
 		D23EF0B3272C5597003E0AFD /* Repos List */ = {
@@ -171,6 +171,14 @@
 				D2F38B59272C264E009DE6D6 /* Repo Details */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D246DF3B272F45CE00BE233A /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				D20F64C8272E13AD0083D74C /* TrendingReposLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 		D24E164C272DB00000916729 /* ToastView */ = {
@@ -253,7 +261,7 @@
 			children = (
 				D23EF0CC272D5647003E0AFD /* TrendingReposViewModel.swift */,
 				D2F38B5E272C2F82009DE6D6 /* TrendingReposController.swift */,
-				D20F64CB272E7D860083D74C /* Title Section Header */,
+				D20F64CB272E7D860083D74C /* Section Header */,
 				D23EF0BD272D373E003E0AFD /* Repo Cell */,
 			);
 			path = "Trending Repos";
@@ -315,6 +323,7 @@
 				D2F38B54272C2269009DE6D6 /* Constants */,
 				D2F7F23B272BF1F5004D883E /* Coordinator */,
 				D2F7F23C272BF202004D883E /* Base Classes */,
+				D246DF3B272F45CE00BE233A /* Layouts */,
 				D2F7F22B272BEC24004D883E /* Assets.xcassets */,
 				D2F7F230272BEC24004D883E /* Info.plist */,
 			);
@@ -370,7 +379,6 @@
 			isa = PBXGroup;
 			children = (
 				D23EF0CA272D5062003E0AFD /* BaseViewModel.swift */,
-				D20F64C8272E13AD0083D74C /* TrendingReposLayout.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";

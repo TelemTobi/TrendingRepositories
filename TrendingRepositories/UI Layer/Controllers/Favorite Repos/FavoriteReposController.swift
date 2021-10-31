@@ -10,14 +10,14 @@ import Combine
 
 class FavoriteReposController: UIViewController {
 	
+	@IBOutlet private weak var listContainerView: UIView!
+	
 	weak var coordinator: FavoritesCoordinator?
 	
 	private let viewModel = FavoriteReposViewModel()
 	private var subscriptions = Set<AnyCancellable>()
 	
 	private var reposList: ReposListController!
-	
-	@IBOutlet private weak var listContainerView: UIView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

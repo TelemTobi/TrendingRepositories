@@ -41,7 +41,7 @@ struct K {
 		static let NA = "N/A"
 		static let forks = "%d Forks"
 		static let stars = "%d Stars"
-		static let issues = "%d Open Issues"
+		static let issues = "%d Open issues"
 		static let date = "Created %d days ago at %@"
 	}
 }
