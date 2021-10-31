@@ -106,6 +106,15 @@ extension UIView {
 			}
 		}
 	}
+	
+	static func transitionSmoothly(from prevView: UIView, to nextView: UIView, completion: ((Bool) -> Void)? = nil) {
+		UIView.transition(
+			from: prevView, to: nextView,
+			duration: 0.2,
+			options: [.showHideTransitionViews, .transitionCrossDissolve, .curveEaseIn],
+			completion: completion
+		)
+	}
 
 //	MARK: - Shimmer Loader
 	

@@ -9,15 +9,8 @@ import Foundation
 
 protocol ReposDataProvider: BaseViewModel {
 	
-	var repos: [Repository] { get }
-	var currentPage: Int { get }
+	func isLoadingSection(_ section: Int) -> Bool
 	
-	func repo(for indexPath: IndexPath) -> Repository
-	func loadMoreResults()
-}
-
-extension ReposDataProvider {
-	
-	var currentPage: Int { 1 }
-	func loadMoreResults() {}
+	func numberOfItems(in section: Int) -> Int
+	func repo(for indexPath: IndexPath) -> Repository?
 }

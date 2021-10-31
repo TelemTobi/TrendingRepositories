@@ -7,11 +7,15 @@
 
 import Foundation
 
-class FavoriteReposViewModel: BaseViewModel, ReposDataProvider {
+class FavoriteReposViewModel: BaseViewModel {
 	
-	var repos: [Repository] = []
+	private var repos: [Repository] = []
 	
-	func repo(for indexPath: IndexPath) -> Repository {
+	func numberOfItems(in section: Int) -> Int {
+		5
+	}
+	
+	func repo(for indexPath: IndexPath) -> Repository? {
 		return repos[indexPath.item]
 	}
 }

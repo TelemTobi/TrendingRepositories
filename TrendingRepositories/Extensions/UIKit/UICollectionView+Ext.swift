@@ -65,6 +65,12 @@ extension UICollectionView {
 	public func reachedEnd(offset: CGFloat = 0) -> Bool {
 		contentOffset.y > contentSize.height - frame.size.height - offset
 	}
+	
+	public func animatedReload() {
+		UIView.transitionSmoothly(from: self, to: self)
+		reloadData()
+		UIView.transitionSmoothly(from: self, to: self)
+	}
 }
 
 extension UICollectionLayoutListConfiguration {

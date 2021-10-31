@@ -13,6 +13,12 @@ struct K {
 		case main = "Main"
 	}
 	
+	static let Title: [TimeFrame: String] = [
+		.week: "Trending this week",
+		.month: "Trending this month",
+		.year: "Trending this year"
+	]
+	
 	enum Message {
 		static let networkError = "A network error has occured"
 		static let loadingMore = "Loading more results..."

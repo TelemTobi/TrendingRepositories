@@ -12,34 +12,37 @@ import Moya
 class TrendingReposViewModel: BaseViewModel {
 
 	private let provider = MoyaProvider<Github>()
-	private var selectedTimeFrame: TimeFrame = .week
+	private var repos: [TimeFrame: [Repository]] = [:]
 	
-	var isLoadingMorePublisher = CurrentValueSubject<Bool, Never>(false)
-	var currentPage: Int = 1
-	var repos: [Repository] = []
+	var isLoadingSection = CurrentValueSubject<[Bool], Never>([Bool](repeating: false, count: 3))
 	
-	func fetchTrendingRepos(timeFrame: TimeFrame, page: Int = 1) {
-		selectedTimeFrame = timeFrame
-		currentPage = page
+	func isLoadingSection(_ section: Int) -> Bool {
+		return isLoadingSection.value[section]
+	}
+	
+	func repos(for timeFrame: TimeFrame) -> [Repository] {
+		return repos[timeFrame] ?? []
+	}
+	
+	func fetchTrendingRepos() {
+		fetchRepos(timeFrame: .week)
+		fetchRepos(timeFrame: .month)
+		fetchRepos(timeFrame: .year)
+	}
+	
+	func fetchRepos(timeFrame: TimeFrame) {
+		isLoadingSection.value[timeFrame.rawValue] = true
 		
-		if currentPage == 1 {
-			isLoadingPublisher.value = true
-			repos = []
-		}
-		
-		provider.request(.searchRepositories(timeFrame, currentPage)) { [weak self] result in
+		provider.request(.searchRepositories(timeFrame, 1)) { [weak self] result in
 			guard let self = self else { return }
-			
-			defer {
-				self.isLoadingPublisher.value = false
-				self.isLoadingMorePublisher.value = false
-			}
-			
+
+			defer { self.isLoadingSection.value[timeFrame.rawValue] = false }
+
 			switch result {
 			case .success(let response):
 				do {
 					let newRepos = try response.map(GithubResponse<Repository>.self).items
-					self.repos.append(contentsOf: newRepos)
+					self.repos[timeFrame] = newRepos
 				} catch {
 					self.errorMsgPublisher.send(K.Message.networkError)
 				}
@@ -48,15 +51,17 @@ class TrendingReposViewModel: BaseViewModel {
 			}
 		}
 	}
+}
 	
-	func loadMoreResults() {
-		guard !isLoadingMorePublisher.value else { return }
-		
-		isLoadingMorePublisher.value = true
-		fetchTrendingRepos(timeFrame: selectedTimeFrame, page: currentPage + 1)
+extension TrendingReposViewModel: ReposDataProvider {
+	
+	func numberOfItems(in section: Int) -> Int {
+		let timeFrame = TimeFrame(rawValue: section) ?? .week
+		return repos(for: timeFrame).count
 	}
 	
-	func repo(for indexPath: IndexPath) -> Repository {
-		return repos[indexPath.item]
+	func repo(for indexPath: IndexPath) -> Repository? {
+		let timeFrame = TimeFrame(rawValue: indexPath.section) ?? .week
+		return repos(for: timeFrame)[indexPath.item]
 	}
 }

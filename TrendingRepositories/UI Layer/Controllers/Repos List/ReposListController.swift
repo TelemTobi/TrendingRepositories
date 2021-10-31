@@ -10,17 +10,19 @@ import Combine
 
 class ReposListController: UICollectionViewController {
 	
-	private let dataProvider: ReposDataProvider
+	private let viewModel: ReposListViewModel
 	private var subscriptions = Set<AnyCancellable>()
 	
-	init(dataProvider: ReposDataProvider) {
-		self.dataProvider = dataProvider
+	private weak var showingToast: ToastView?
+	
+	init(viewModel: ReposListViewModel) {
+		self.viewModel = viewModel
 		
 		let config = UICollectionLayoutListConfiguration.baseConfiguration
 		let layout = UICollectionViewCompositionalLayout.list(using: config)
 		super.init(collectionViewLayout: layout)
 		
-		collectionView.contentInsetAdjustmentBehavior = .automatic
+		navigationItem.title = viewModel.pageTitle
 	}
 	
 	required init?(coder: NSCoder) {
@@ -30,35 +32,33 @@ class ReposListController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		registerReusableViews()
+		setupCollectionView()
 		registerSubscribers()
 	}
 	
 //	MARK: - Setup Methods
 	
-	private func registerReusableViews() {
+	private func setupCollectionView() {
+		collectionView.showsVerticalScrollIndicator = false
+		collectionView.contentInsetAdjustmentBehavior = .automatic
+		
 		collectionView.register(cellType: RepoCollectionViewCell.self)
 		collectionView.register(reusableViewType: SearchBarHeader.self, ofKind: .header)
 	}
 	
 	private func registerSubscribers() {
-		dataProvider.isLoadingPublisher
-			.sink { [weak self] _ in self?.reloadData() }
+		viewModel.isLoadingPublisher
+			.sink { [weak self] _ in
+				self?.collectionView.reloadData()
+				self?.showingToast?.dismiss()
+			}
 			.store(in: &subscriptions)
 		
-		dataProvider.errorMsgPublisher
-			.sink(receiveValue: { print($0) })
+		viewModel.errorMsgPublisher
+			.sink(receiveValue: { [weak self] in
+				self?.showToast(with: $0, duration: .short)
+			})
 			.store(in: &subscriptions)
-	}
-	
-//	MARK: - Private Methods
-	
-	private func reloadData() {
-		collectionView.reloadData()
-		
-		if dataProvider.currentPage == 1 {
-			collectionView.setContentOffset(.zero, animated: true)
-		}
 	}
 }
 
@@ -71,8 +71,9 @@ extension ReposListController {
 	}
 	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		if collectionView.reachedEnd(offset: 50) {
-			dataProvider.loadMoreResults()
+		if !viewModel.isLoading, collectionView.reachedEnd(offset: 50) {
+			showingToast = showToast(with: K.Message.loadingMore, duration: .fixed)
+			viewModel.loadMoreResults()
 		}
 	}
 }
@@ -82,16 +83,17 @@ extension ReposListController {
 extension ReposListController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		dataProvider.isLoading ? 20 : dataProvider.repos.count
+		viewModel.numberOfItems(in: section)
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let repoCell = collectionView.dequeueReusableCell(with: RepoCollectionViewCell.self, for: indexPath)
-		repoCell.configure(with: dataProvider, indexPath)
+		repoCell.configure(with: viewModel, indexPath)
 		return repoCell
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		
 		let searchBarHeader = collectionView.dequeueReusableView(with: SearchBarHeader.self, for: indexPath)
 		searchBarHeader.delegate = self
 		return searchBarHeader

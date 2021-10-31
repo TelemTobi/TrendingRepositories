@@ -21,4 +21,11 @@ class TrendingCoordinator: Coordinator {
 		trendingReposVC.coordinator = self
 		rootViewController.pushViewController(trendingReposVC, animated: false)
 	}
+	
+	func pushReposListController(timeFrame: TimeFrame, _ viewModel: TrendingReposViewModel) {
+		let initialData = viewModel.repos(for: timeFrame)
+		let viewModel = ReposListViewModel(timeFrame: timeFrame, initialData: initialData)
+		let reposListController = ReposListController(viewModel: viewModel)
+		rootViewController.pushViewController(reposListController, animated: true)
+	}
 }

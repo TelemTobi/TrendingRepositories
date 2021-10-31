@@ -10,12 +10,8 @@ import UIKit
 class RepoCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet private weak var avatarImageView: UIImageView!
-	@IBOutlet private weak var fullNameLabel: UILabel!
-	@IBOutlet private weak var starsCountLabel: UILabel!
-	
-	@IBOutlet private weak var languageView: UIStackView!
-	@IBOutlet private weak var languageLabel: UILabel!
-	
+	@IBOutlet private weak var nameLabel: UILabel!
+	@IBOutlet private weak var descriptionLabel: UILabel!
 	@IBOutlet private weak var bookmarkButton: UIButton!
 	
 	private var repository: Repository?
@@ -28,7 +24,7 @@ class RepoCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func configure(with dataProvider: ReposDataProvider, _ indexPath: IndexPath) {
-		guard !dataProvider.isLoading else {
+		guard !dataProvider.isLoadingSection(indexPath.section) else {
 			bookmarkButton.isHidden = true
 			contentView.smartShimmer()
 			return
@@ -38,16 +34,15 @@ class RepoCollectionViewCell: UICollectionViewCell {
 		configure(with: dataProvider.repo(for: indexPath))
 	}
 	
-	private func configure(with repository: Repository) {
+	private func configure(with repository: Repository?) {
+		guard let repository = repository else { return }
+		
 		self.repository = repository
 		
 		avatarImageView.setImage(with: repository.owner.avatarUrl)
 		
-		fullNameLabel.text = repository.fullName
-		starsCountLabel.text = String(repository.starsCount)
-		
-		languageView.isHidden = repository.language == nil
-		languageLabel.text = repository.language
+		nameLabel.text = repository.fullName
+		descriptionLabel.text = repository.description
 		
 		bookmarkButton.isSelected = UserDefaults.bookmarkedRepos.contains(repository)
 	}

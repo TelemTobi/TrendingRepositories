@@ -15,58 +15,81 @@ class TrendingReposController: UIViewController {
 	private let viewModel = TrendingReposViewModel()
 	private var subscriptions = Set<AnyCancellable>()
 	
-	@IBOutlet private weak var timeframesControl: UISegmentedControl!
 	@IBOutlet private weak var listContainerView: UIView!
 	
-	private var reposList: ReposListController!
-	private var selectedTimeFrame: TimeFrame = .week
-	private weak var showingToast: ToastView?
+	private var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setupReposList()
-		setupTimeframsControl()
+		setupCollectionView()
 		registerSubscribers()
 		
-		viewModel.fetchTrendingRepos(timeFrame: selectedTimeFrame)
+		viewModel.fetchTrendingRepos()
 	}
 	
 //	MARK: - Setup Methods
 	
-	private func setupReposList() {
-		reposList = ReposListController(dataProvider: viewModel)
+	private func setupCollectionView() {
+		let layout = TrendingReposLayout.create()
+		collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		
-		addChild(reposList)
-		reposList.didMove(toParent: self)
-		listContainerView.addSubview(reposList.collectionView)
-		reposList.collectionView.pinEdgesToSuperview()
-	}
-	
-	private func setupTimeframsControl() {
-		timeframesControl.addTarget(self, action: #selector(timeframeChanged), for: .valueChanged)
+		listContainerView.addSubview(collectionView)
+		collectionView.pinEdgesToSuperview()
+		
+		collectionView.delegate = self
+		collectionView.dataSource = self
+		
+		collectionView.register(cellType: RepoCollectionViewCell.self)
+		collectionView.register(reusableViewType: TitleSectionHeader.self, ofKind: .header)
 	}
 	
 	private func registerSubscribers() {
-		viewModel.isLoadingMorePublisher
-			.removeDuplicates()
-			.sink { [weak self] _ in self?.handleLoadingToast() }
+		viewModel.isLoadingSection
+			.sink(receiveValue: { [weak self] _ in
+				self?.collectionView.animatedReload()
+			})
 			.store(in: &subscriptions)
 	}
+}
+
+//	MARK: - CollectionView Data Source
+
+extension TrendingReposController: UICollectionViewDataSource {
 	
-	
-//	MARK: - Private Methods
-	
-	@objc private func timeframeChanged() {
-		selectedTimeFrame = TimeFrame(rawValue: timeframesControl.selectedSegmentIndex) ?? .week
-		viewModel.fetchTrendingRepos(timeFrame: selectedTimeFrame)
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 3
 	}
 	
-	private func handleLoadingToast() {
-		if viewModel.isLoadingMorePublisher.value {
-			showingToast = showToast(with: K.Message.loadingMore, duration: .fixed)
-		} else {
-			showingToast?.dismiss()
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return viewModel.isLoadingSection(section) ? 9 : viewModel.numberOfItems(in: section)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let repoCell = collectionView.dequeueReusableCell(with: RepoCollectionViewCell.self, for: indexPath)
+		repoCell.configure(with: viewModel, indexPath)
+		return repoCell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		let timeFrame = TimeFrame(rawValue: indexPath.section) ?? .week
+		let titleHeader = collectionView.dequeueReusableView(with: TitleSectionHeader.self, for: indexPath)
+		
+		titleHeader.configure(timeFrame: timeFrame)
+		titleHeader.buttonTapCallback = { [weak self] in
+			guard let self = self else { return }
+			self.coordinator?.pushReposListController(timeFrame: timeFrame, self.viewModel)
 		}
+		
+		return titleHeader
+	}
+}
+
+//	MARK: - CollectionView Delegate
+
+extension TrendingReposController: UICollectionViewDelegate {
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
 	}
 }

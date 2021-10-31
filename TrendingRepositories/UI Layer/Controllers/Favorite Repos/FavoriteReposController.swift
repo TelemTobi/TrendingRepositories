@@ -25,11 +25,11 @@ class FavoriteReposController: UIViewController {
 //	MARK: - Setup Methods
 	
 	private func setupReposList() {
-		reposList = ReposListController(dataProvider: viewModel)
-		
-		addChild(reposList)
-		reposList.didMove(toParent: self)
-		listContainerView.addSubview(reposList.collectionView)
-		reposList.collectionView.pinEdgesToSuperview()
+//		reposList = ReposListController(dataProvider: viewModel, collectionType: .list)
+//		
+//		addChild(reposList)
+//		reposList.didMove(toParent: self)
+//		listContainerView.addSubview(reposList.collectionView)
+//		reposList.collectionView.pinEdgesToSuperview()
 	}
 }
