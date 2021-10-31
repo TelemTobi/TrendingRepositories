@@ -62,25 +62,9 @@ extension UICollectionView {
 		) as! T
 	}
 	
-	public func reachedEnd(offset: CGFloat = 0) -> Bool {
-		contentOffset.y > contentSize.height - frame.size.height - offset
-	}
-	
 	public func animatedReload() {
 		UIView.transitionSmoothly(from: self, to: self)
 		reloadData()
 		UIView.transitionSmoothly(from: self, to: self)
-	}
-}
-
-extension UICollectionLayoutListConfiguration {
-	
-	static var baseConfiguration: UICollectionLayoutListConfiguration {
-		var config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
-		config.showsSeparators = false
-		config.headerMode = .supplementary
-		config.backgroundColor = .systemBackground
-		config.headerTopPadding = 0
-		return config
 	}
 }

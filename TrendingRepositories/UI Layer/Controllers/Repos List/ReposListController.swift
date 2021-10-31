@@ -8,93 +8,84 @@
 import UIKit
 import Combine
 
-class ReposListController: UICollectionViewController {
+class ReposListController: UITableViewController {
 	
-	private let viewModel: ReposListViewModel
+	var viewModel: ReposListViewModel?
 	private var subscriptions = Set<AnyCancellable>()
 	
-	init(viewModel: ReposListViewModel) {
-		self.viewModel = viewModel
-		
-		let config = UICollectionLayoutListConfiguration.baseConfiguration
-		let layout = UICollectionViewCompositionalLayout.list(using: config)
-		super.init(collectionViewLayout: layout)
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+	@IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setupCollectionView()
+		setupTableView()
 		registerSubscribers()
 	}
 	
 //	MARK: - Setup Methods
 	
-	private func setupCollectionView() {
-		collectionView.showsVerticalScrollIndicator = false
-		collectionView.contentInsetAdjustmentBehavior = .automatic
-		
-		collectionView.register(cellType: RepoCollectionViewCell.self)
-		collectionView.register(reusableViewType: SearchBarHeader.self, ofKind: .header)
+	private func setupTableView() {
+		tableView.register(cellType: RepoTableViewCell.self)
+		tableView.tableFooterView?.isHidden = true
 	}
 	
 	private func registerSubscribers() {
-		viewModel.isLoadingPublisher
-			.sink { [weak self] _ in
-				DispatchQueue.main.async {
-					self?.collectionView.animatedReload()
-				}
-			}
+		viewModel?.isLoadingPublisher
+			.sink { [weak self] _ in self?.reloadData() }
 			.store(in: &subscriptions)
 		
-		viewModel.errorMsgPublisher
+		viewModel?.errorMsgPublisher
 			.sink(receiveValue: { [weak self] message in
 				self?.showToast(with: message, duration: .short)
 			})
 			.store(in: &subscriptions)
 	}
+	
+//	MARK: - Private Methods
+	
+	private func reloadData() {
+		DispatchQueue.main.async { [weak self] in
+			if (self?.viewModel?.currentPage ?? 0) > 1 {
+				self?.tableView.reloadData()
+				self?.tableView.tableFooterView?.isHidden = true
+			} else {
+				self?.tableView.reloadDataWithAnimation()
+			}
+		}
+	}
 }
 
-//	MARK: - CollectionView Delegate
+//	MARK: - TableView Delegate
 
 extension ReposListController {
 
-	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 	}
 	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		navigationController?.view.endEditing(true)
 		
-		if !viewModel.isLoading, collectionView.reachedEnd(offset: 50) {
-			viewModel.loadMoreResults()
+		if viewModel?.shouldLoadMoreResults == true, tableView.reachedEnd(offset: 150) {
+			tableView.tableFooterView?.isHidden = false
+			viewModel?.loadMoreResults()
 		}
 	}
 }
 
-//	MARK: - CollectionView DataSource
+//	MARK: - TableView DataSource
 
 extension ReposListController {
 	
-	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel.numberOfItems(in: section)
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return viewModel?.numberOfItems(in: section) ?? 0
 	}
 	
-	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let repoCell = collectionView.dequeueReusableCell(with: RepoCollectionViewCell.self, for: indexPath)
-		repoCell.configure(with: viewModel, indexPath)
-		return repoCell
-	}
-	
-	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-		
-		let searchBarHeader = collectionView.dequeueReusableView(with: SearchBarHeader.self, for: indexPath)
-		searchBarHeader.delegate = self
-		return searchBarHeader
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(with: RepoTableViewCell.self, for: indexPath)
+		cell.configure(with: viewModel, indexPath)
+		return cell
 	}
 }
 
@@ -107,6 +98,6 @@ extension ReposListController: UISearchBarDelegate {
 	}
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		viewModel.executeSearch(text: searchText)
+		viewModel?.executeSearch(text: searchText)
 	}
 }

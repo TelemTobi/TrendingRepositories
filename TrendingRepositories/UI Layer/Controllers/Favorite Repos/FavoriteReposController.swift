@@ -29,12 +29,13 @@ class FavoriteReposController: UIViewController {
 //	MARK: - Setup Methods
 	
 	private func setupReposList() {
-		reposList = ReposListController(viewModel: viewModel)
+		reposList = ReposListController.instantiate(storyboardName: .main)
+		reposList.viewModel = viewModel
 		
 		addChild(reposList)
 		reposList.didMove(toParent: self)
-		listContainerView.addSubview(reposList.collectionView)
-		reposList.collectionView.pinEdgesToSuperview()
+		listContainerView.addSubview(reposList.tableView)
+		reposList.tableView.pinEdgesToSuperview()
 	}
 	
 	private func registerSubscribers() {

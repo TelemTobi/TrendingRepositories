@@ -15,14 +15,15 @@ class ReposListViewModel: BaseViewModel {
 	var repos: [Repository] = []
 	
 	private var selectedTimeFrame: TimeFrame = .week
-	private var currentPage: Int = 1
 	
 	private var searchText: String = ""
 	private var filteredRepos: [Repository] = []
 	private var isSearchActive: Bool { searchText.count > 1 }
 	private var searchWorkItem: DispatchWorkItem!
-	
+
+	var currentPage: Int = 1
 	var pageTitle: String { K.Title[selectedTimeFrame] ?? "" }
+	var shouldLoadMoreResults: Bool { !isLoading }
 	
 	init(timeFrame: TimeFrame, initialData: [Repository]) {
 		super.init()
@@ -37,7 +38,9 @@ class ReposListViewModel: BaseViewModel {
 		searchWorkItem = DispatchWorkItem(block: { [weak self] in
 			guard let self = self else { return }
 			
-			self.filteredRepos = self.repos.filter({ $0.fullName.contains(self.searchText) })
+			self.filteredRepos = self.repos.filter({
+				$0.fullName.lowercased().contains(self.searchText.lowercased())
+			})
 			self.isLoadingPublisher.value = false
 		})
 	}

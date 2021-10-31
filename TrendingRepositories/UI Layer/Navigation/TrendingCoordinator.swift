@@ -26,7 +26,10 @@ class TrendingCoordinator: Coordinator {
 	func pushReposListController(timeFrame: TimeFrame, _ viewModel: TrendingReposViewModel) {
 		let initialData = viewModel.repos(for: timeFrame)
 		let viewModel = ReposListViewModel(timeFrame: timeFrame, initialData: initialData)
-		let reposListController = ReposListController(viewModel: viewModel)
+		
+		let reposListController = ReposListController.instantiate(storyboardName: .main)
+		reposListController.viewModel = viewModel
+		
 		reposListController.navigationItem.title = viewModel.pageTitle
 		rootViewController.pushViewController(reposListController, animated: true)
 	}

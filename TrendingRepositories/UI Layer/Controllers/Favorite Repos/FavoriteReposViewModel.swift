@@ -9,6 +9,8 @@ import Foundation
 
 class FavoriteReposViewModel: ReposListViewModel {
 	
+	override var shouldLoadMoreResults: Bool { false }
+	
 	init() {
 		super.init(timeFrame: .week, initialData: UserDefaults.bookmarkedRepos)
 		reloadData()

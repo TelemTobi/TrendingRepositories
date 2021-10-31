@@ -14,8 +14,4 @@ class BaseViewModel {
 	let errorMsgPublisher = PassthroughSubject<String, Never>()
 	
 	var isLoading: Bool { isLoadingPublisher.value == true }
-	
-	deinit {
-		print("Deinitialized viewmodel \(self)")
-	}
 }
