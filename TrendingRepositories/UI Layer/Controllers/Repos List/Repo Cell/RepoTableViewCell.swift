@@ -25,17 +25,9 @@ class RepoTableViewCell: UITableViewCell {
 		bookmarkButton.setImage(UIImage(systemName: K.Image.bookmarkFill), for: .selected)
 	}
 	
-	func configure(with dataProvider: ReposDataProvider?, _ indexPath: IndexPath) {
-		guard let dataProvider = dataProvider else { return }
-
-		guard !dataProvider.isLoadingSection(indexPath.section) else {
-			bookmarkButton.isHidden = true
-			contentView.smartShimmer()
-			return
-		}
-		contentView.stopSmartShimmer()
-		bookmarkButton.isHidden = false
-		configure(with: dataProvider.repo(for: indexPath))
+	func configure(with viewModel: ReposListViewModel?, _ indexPath: IndexPath) {
+		guard let viewModel = viewModel else { return }
+		configure(with: viewModel.repo(for: indexPath))
 	}
 	
 	private func configure(with repository: Repository?) {

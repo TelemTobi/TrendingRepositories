@@ -33,6 +33,7 @@ class TrendingReposController: UIViewController {
 	private func setupCollectionView() {
 		let layout = TrendingReposLayout.create()
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+		collectionView.showsVerticalScrollIndicator = false
 		
 		listContainerView.addSubview(collectionView)
 		collectionView.pinEdgesToSuperview()

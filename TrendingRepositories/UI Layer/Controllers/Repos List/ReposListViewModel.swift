@@ -23,7 +23,6 @@ class ReposListViewModel: BaseViewModel {
 
 	var currentPage: Int = 1
 	var pageTitle: String { K.Title[selectedTimeFrame] ?? "" }
-	var shouldLoadMoreResults: Bool { !isLoading && !isSearchActive }
 	
 	init(timeFrame: TimeFrame, initialData: [Repository]) {
 		super.init()
@@ -80,13 +79,6 @@ class ReposListViewModel: BaseViewModel {
 	func loadMoreResults() {
 		isLoadingPublisher.value = true
 		fetchRepos(timeFrame: selectedTimeFrame, page: currentPage + 1)
-	}
-}
-	
-extension ReposListViewModel: ReposDataProvider {
-	
-	func isLoadingSection(_ section: Int) -> Bool {
-		return false
 	}
 	
 	func numberOfItems(in section: Int) -> Int {

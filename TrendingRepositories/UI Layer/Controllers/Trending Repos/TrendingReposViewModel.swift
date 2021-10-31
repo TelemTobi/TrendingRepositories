@@ -16,17 +16,9 @@ class TrendingReposViewModel: BaseViewModel {
 	
 	var isLoadingSection = CurrentValueSubject<[Bool], Never>([Bool](repeating: false, count: 3))
 	
-	func repos(for timeFrame: TimeFrame) -> [Repository] {
-		return repos[timeFrame] ?? []
-	}
+//	MARK: - Private Methods
 	
-	func fetchTrendingRepos() {
-		fetchRepos(timeFrame: .week)
-		fetchRepos(timeFrame: .month)
-		fetchRepos(timeFrame: .year)
-	}
-	
-	func fetchRepos(timeFrame: TimeFrame) {
+	private func fetchRepos(timeFrame: TimeFrame) {
 		isLoadingSection.value[timeFrame.rawValue] = true
 		
 		provider.request(.searchRepositories(timeFrame, 1)) { [weak self] result in
@@ -47,9 +39,18 @@ class TrendingReposViewModel: BaseViewModel {
 			}
 		}
 	}
-}
 	
-extension TrendingReposViewModel: ReposDataProvider {
+//	MARK: - Public Methods
+	
+	func repos(for timeFrame: TimeFrame) -> [Repository] {
+		return repos[timeFrame] ?? []
+	}
+	
+	func fetchTrendingRepos() {
+		fetchRepos(timeFrame: .week)
+		fetchRepos(timeFrame: .month)
+		fetchRepos(timeFrame: .year)
+	}
 	
 	func isLoadingSection(_ section: Int) -> Bool {
 		return isLoadingSection.value[section]

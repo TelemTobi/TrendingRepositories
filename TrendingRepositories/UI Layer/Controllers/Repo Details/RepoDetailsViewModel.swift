@@ -39,6 +39,14 @@ class RepoDetailsViewModel: BaseViewModel {
 		String(format: K.RepositoryDetails.issues, repository.issuesCount)
 	}
 	
+	var githubUrl: String {
+		repository.url
+	}
+	
+	var profileUrl: String {
+		repository.owner.profileUrl
+	}
+	
 	var creationDate: String {
 		let date = repository.creationDate.toDate() ?? Date()
 		let dateString = date.toString(format: "dd/MM/yyy")

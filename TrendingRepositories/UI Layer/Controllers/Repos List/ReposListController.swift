@@ -8,17 +8,12 @@
 import UIKit
 import Combine
 
-protocol ReposListDelegate: AnyObject {
-	func pushRepoDetailsController(_ repository: Repository)
-}
-
 class ReposListController: UITableViewController {
 	
 	var viewModel: ReposListViewModel?
-	weak var delegate: ReposListDelegate?
-	private var subscriptions = Set<AnyCancellable>()
+	var coordinator: TabBarEmbeddedCoordinator?
 	
-	@IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+	private var subscriptions = Set<AnyCancellable>()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,13 +25,16 @@ class ReposListController: UITableViewController {
 //	MARK: - Setup Methods
 	
 	private func setupTableView() {
+		tableView.contentInset.bottom = 0
+		tableView.tableFooterView?.isHidden = true
 		tableView.register(cellType: RepoTableViewCell.self)
-		tableView.tableFooterView?.isHidden = viewModel?.shouldLoadMoreResults != true
 	}
 	
 	private func registerSubscribers() {
 		viewModel?.isLoadingPublisher
-			.sink { [weak self] _ in self?.reloadData() }
+			.sink { [weak self] _ in
+				self?.reloadData()
+			}
 			.store(in: &subscriptions)
 		
 		viewModel?.errorMsgPublisher
@@ -52,6 +50,7 @@ class ReposListController: UITableViewController {
 		DispatchQueue.main.async { [weak self] in
 			if (self?.viewModel?.currentPage ?? 0) > 1 {
 				self?.tableView.reloadData()
+				self?.tableView.tableFooterView?.isHidden = self?.viewModel?.isLoading != true
 			} else {
 				self?.tableView.reloadDataWithAnimation()
 			}
@@ -66,13 +65,13 @@ extension ReposListController {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let repository = viewModel?.repo(for: indexPath) else { return }
-		delegate?.pushRepoDetailsController(repository)
+		coordinator?.pushRepoDetailsController(repository)
 	}
 	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		navigationController?.view.endEditing(true)
 		
-		if viewModel?.shouldLoadMoreResults == true, tableView.reachedEnd(offset: 150) {
+		if viewModel?.isLoading != true, tableView.reachedEnd(offset: 150) {
 			viewModel?.loadMoreResults()
 		}
 	}

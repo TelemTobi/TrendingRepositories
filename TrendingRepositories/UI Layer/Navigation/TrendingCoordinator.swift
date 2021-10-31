@@ -7,16 +7,9 @@
 
 import UIKit
 
-class TrendingCoordinator: Coordinator, ReposListDelegate {
+class TrendingCoordinator: TabBarEmbeddedCoordinator {
 	
-	var childCoordinators: [Coordinator] = []
-	var rootViewController: UINavigationController
-	
-	init() {
-		rootViewController = UINavigationController()
-	}
-	
-	func start() {
+	override func start() {
 		let trendingReposVC = TrendingReposController.instantiate(storyboardName: .main)
 		trendingReposVC.coordinator = self
 		rootViewController.pushViewController(trendingReposVC, animated: false)
@@ -28,19 +21,10 @@ class TrendingCoordinator: Coordinator, ReposListDelegate {
 		
 		let reposListController = ReposListController.instantiate(storyboardName: .main)
 		reposListController.viewModel = viewModel
-		reposListController.delegate = self
+		reposListController.coordinator = self
 		reposListController.navigationItem.title = viewModel.pageTitle
 		
 		rootViewController.hero.isEnabled = false
 		rootViewController.pushViewController(reposListController, animated: true)
-	}
-	
-	func pushRepoDetailsController(_ repository: Repository) {
-		let repoDetailsController = RepoDetailsController.instantiate(storyboardName: .main)
-		repoDetailsController.viewModel = RepoDetailsViewModel(repository: repository)
-		repoDetailsController.navigationItem.title = repository.name
-		
-		rootViewController.hero.isEnabled = true
-		rootViewController.pushViewController(repoDetailsController, animated: true)
 	}
 }

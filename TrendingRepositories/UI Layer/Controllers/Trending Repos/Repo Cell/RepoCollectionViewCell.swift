@@ -7,13 +7,6 @@
 
 import UIKit
 
-protocol ReposDataProvider: BaseViewModel {
-	
-	func numberOfItems(in section: Int) -> Int
-	func repo(for indexPath: IndexPath) -> Repository?
-	func isLoadingSection(_ section: Int) -> Bool
-}
-
 class RepoCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet private weak var avatarImageView: UIImageView!
@@ -30,15 +23,15 @@ class RepoCollectionViewCell: UICollectionViewCell {
 		bookmarkButton.setImage(UIImage(systemName: K.Image.bookmarkFill), for: .selected)
 	}
 	
-	func configure(with dataProvider: ReposDataProvider, _ indexPath: IndexPath) {
-		guard !dataProvider.isLoadingSection(indexPath.section) else {
+	func configure(with viewModel: TrendingReposViewModel, _ indexPath: IndexPath) {
+		guard !viewModel.isLoadingSection(indexPath.section) else {
 			bookmarkButton.isHidden = true
 			contentView.smartShimmer()
 			return
 		}
 		contentView.stopSmartShimmer()
 		bookmarkButton.isHidden = false
-		configure(with: dataProvider.repo(for: indexPath))
+		configure(with: viewModel.repo(for: indexPath))
 	}
 	
 	private func configure(with repository: Repository?) {

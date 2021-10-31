@@ -19,6 +19,7 @@ class RepoDetailsController: UIViewController {
 	@IBOutlet private weak var issuesLabel: UILabel!
 	@IBOutlet private weak var dateLabel: UILabel!
 	
+	var coordinator: TabBarEmbeddedCoordinator?
 	var viewModel: RepoDetailsViewModel?
 	
 	override func viewDidLoad() {
@@ -48,10 +49,10 @@ class RepoDetailsController: UIViewController {
 	}
 	
 	@IBAction func githubButtonTapped(_ sender: Any) {
-		
+		coordinator?.presentSafariController(with: viewModel?.githubUrl)
 	}
 	
 	@IBAction func profileButtonTapped(_ sender: Any) {
-		
+		coordinator?.presentSafariController(with: viewModel?.profileUrl)
 	}
 }

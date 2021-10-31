@@ -25,6 +25,7 @@
 		D23EF0CF272D5A38003E0AFD /* FavoriteReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */; };
 		D23EF0DA272D72EC003E0AFD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */; };
 		D246DF38272F14CA00BE233A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DF37272F14CA00BE233A /* String+Ext.swift */; };
+		D246DF3A272F364500BE233A /* TabBarEmbeddedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DF39272F364500BE233A /* TabBarEmbeddedCoordinator.swift */; };
 		D24E1644272D8F1400916729 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */; };
 		D24E1646272D9BE800916729 /* IndexPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1645272D9BE800916729 /* IndexPath+Ext.swift */; };
 		D24E164E272DB01A00916729 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24E164D272DB01900916729 /* ToastView.xib */; };
@@ -72,6 +73,7 @@
 		D23EF0CE272D5A38003E0AFD /* FavoriteReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteReposViewModel.swift; sourceTree = "<group>"; };
 		D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		D246DF37272F14CA00BE233A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		D246DF39272F364500BE233A /* TabBarEmbeddedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEmbeddedCoordinator.swift; sourceTree = "<group>"; };
 		D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		D24E1645272D9BE800916729 /* IndexPath+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Ext.swift"; sourceTree = "<group>"; };
 		D24E164D272DB01900916729 /* ToastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				D2F7F240272BF597004D883E /* AppCoordinator.swift */,
+				D246DF39272F364500BE233A /* TabBarEmbeddedCoordinator.swift */,
 				D2F38B5A272C28F7009DE6D6 /* TrendingCoordinator.swift */,
 				D2F38B5C272C290C009DE6D6 /* FavoritesCoordinator.swift */,
 			);
@@ -514,6 +517,7 @@
 				D20F64C9272E13AD0083D74C /* TrendingReposLayout.swift in Sources */,
 				D23EF0B7272C92F6003E0AFD /* Github.swift in Sources */,
 				D2F38B5B272C28F7009DE6D6 /* TrendingCoordinator.swift in Sources */,
+				D246DF3A272F364500BE233A /* TabBarEmbeddedCoordinator.swift in Sources */,
 				D2C350C2272ED9EE007BBB51 /* RepoTableViewCell.swift in Sources */,
 				D23EF0CD272D5647003E0AFD /* TrendingReposViewModel.swift in Sources */,
 				D27E933F272EF4FA00773002 /* RepoDetailsViewController.swift in Sources */,
