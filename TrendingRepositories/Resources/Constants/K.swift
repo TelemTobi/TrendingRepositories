@@ -27,9 +27,21 @@ struct K {
 		static let bookmarksChange = Notification.Name("BookmarksChange")
 	}
 	
+	enum DateFormats: String {
+		case yyyyMMdd = "yyyy/MM/dd"
+	}
+	
 	static let Title: [TimeFrame: String] = [
 		.week: "Trending this week",
 		.month: "Trending this month",
 		.year: "Trending this year"
 	]
+	
+	enum RepositoryDetails {
+		static let NA = "N/A"
+		static let forks = "%d Forks"
+		static let stars = "%d Stars"
+		static let issues = "%d Open Issues"
+		static let date = "Created %d days ago at %@"
+	}
 }

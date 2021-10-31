@@ -23,7 +23,7 @@ class ReposListViewModel: BaseViewModel {
 
 	var currentPage: Int = 1
 	var pageTitle: String { K.Title[selectedTimeFrame] ?? "" }
-	var shouldLoadMoreResults: Bool { !isLoading }
+	var shouldLoadMoreResults: Bool { !isLoading && !isSearchActive }
 	
 	init(timeFrame: TimeFrame, initialData: [Repository]) {
 		super.init()

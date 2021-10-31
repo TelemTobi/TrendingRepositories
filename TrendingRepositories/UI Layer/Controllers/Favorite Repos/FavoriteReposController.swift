@@ -31,6 +31,7 @@ class FavoriteReposController: UIViewController {
 	private func setupReposList() {
 		reposList = ReposListController.instantiate(storyboardName: .main)
 		reposList.viewModel = viewModel
+		reposList.delegate = self
 		
 		addChild(reposList)
 		reposList.didMove(toParent: self)
@@ -45,5 +46,12 @@ class FavoriteReposController: UIViewController {
 				self?.viewModel.reloadData()
 			})
 			.store(in: &subscriptions)
+	}
+}
+
+extension FavoriteReposController: ReposListDelegate {
+	
+	func pushRepoDetailsController(_ repository: Repository) {
+		coordinator?.pushRepoDetailsController(repository)
 	}
 }

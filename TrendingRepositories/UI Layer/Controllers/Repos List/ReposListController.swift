@@ -8,9 +8,14 @@
 import UIKit
 import Combine
 
+protocol ReposListDelegate: AnyObject {
+	func pushRepoDetailsController(_ repository: Repository)
+}
+
 class ReposListController: UITableViewController {
 	
 	var viewModel: ReposListViewModel?
+	weak var delegate: ReposListDelegate?
 	private var subscriptions = Set<AnyCancellable>()
 	
 	@IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -60,7 +65,8 @@ extension ReposListController {
 
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+		guard let repository = viewModel?.repo(for: indexPath) else { return }
+		delegate?.pushRepoDetailsController(repository)
 	}
 	
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {

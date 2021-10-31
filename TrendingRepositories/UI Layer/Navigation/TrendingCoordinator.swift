@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrendingCoordinator: Coordinator {
+class TrendingCoordinator: Coordinator, ReposListDelegate {
 	
 	var childCoordinators: [Coordinator] = []
 	var rootViewController: UINavigationController
@@ -28,13 +28,14 @@ class TrendingCoordinator: Coordinator {
 		
 		let reposListController = ReposListController.instantiate(storyboardName: .main)
 		reposListController.viewModel = viewModel
+		reposListController.delegate = self
 		reposListController.navigationItem.title = viewModel.pageTitle
 		
 		rootViewController.hero.isEnabled = false
 		rootViewController.pushViewController(reposListController, animated: true)
 	}
 	
-	func pushRepoDetailsView(_ repository: Repository) {
+	func pushRepoDetailsController(_ repository: Repository) {
 		let repoDetailsController = RepoDetailsController.instantiate(storyboardName: .main)
 		repoDetailsController.viewModel = RepoDetailsViewModel(repository: repository)
 		repoDetailsController.navigationItem.title = repository.name

@@ -21,4 +21,13 @@ class FavoritesCoordinator: Coordinator {
 		favoriteReposVC.coordinator = self
 		rootViewController.pushViewController(favoriteReposVC, animated: false)
 	}
+	
+	func pushRepoDetailsController(_ repository: Repository) {
+		let repoDetailsController = RepoDetailsController.instantiate(storyboardName: .main)
+		repoDetailsController.viewModel = RepoDetailsViewModel(repository: repository)
+		repoDetailsController.navigationItem.title = repository.name
+		
+		rootViewController.hero.isEnabled = true
+		rootViewController.pushViewController(repoDetailsController, animated: true)
+	}
 }

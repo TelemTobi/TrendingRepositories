@@ -14,4 +14,8 @@ extension Date {
 		dateFormatter.dateFormat = format
 		return dateFormatter.string(from: self)
 	}
+	
+	func daysPassed() -> Int {
+		return Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+	}
 }

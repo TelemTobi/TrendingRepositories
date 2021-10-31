@@ -21,7 +21,7 @@ struct Repository: Codable {
 	
 	let starsCount: Int
 	let forksCount: Int
-	let watchersCount: Int
+	let issuesCount: Int
 	
 	enum CodingKeys: String, CodingKey {
 		case id
@@ -34,7 +34,7 @@ struct Repository: Codable {
 		case description
 		case starsCount = "stargazers_count"
 		case forksCount = "forks_count"
-		case watchersCount = "watchers_count"
+		case issuesCount = "open_issues"
 	}
 	
 	var heroID: String = {
