@@ -23,6 +23,9 @@ extension UIView {
 		return components.last!
 	}
 	
+	var viewWidth: CGFloat { return frame.width }
+	var viewHeight: CGFloat { return frame.height }
+	
 // MARK: - IBInspectables
 	
 	@IBInspectable var cornerRadius: CGFloat {
@@ -35,21 +38,18 @@ extension UIView {
 		}
 	}
 	
-	@IBInspectable var borderWidth: CGFloat {
+	@IBInspectable var isElliptic: Bool {
 		get {
-			return layer.borderWidth
+			cornerRadius == viewHeight / 2 || cornerRadius == viewWidth / 2
 		}
 		set {
-			layer.borderWidth = newValue
-		}
-	}
-	
-	@IBInspectable var borderColor: UIColor? {
-		get {
-			return UIColor(cgColor: layer.borderColor!)
-		}
-		set {
-			layer.borderColor = newValue?.cgColor
+			if newValue {
+				cornerRadius = viewWidth > viewHeight ? viewHeight / 2 : viewWidth / 2
+				clipsToBounds = true
+			} else {
+				cornerRadius = 0
+				clipsToBounds = false
+			}
 		}
 	}
 	

@@ -36,6 +36,10 @@ struct Repository: Codable {
 		case forksCount = "forks_count"
 		case watchersCount = "watchers_count"
 	}
+	
+	var heroID: String = {
+		UUID().uuidString
+	}()
 }
 
 extension Repository {

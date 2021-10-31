@@ -97,6 +97,7 @@ extension TrendingReposController: UICollectionViewDataSource {
 extension TrendingReposController: UICollectionViewDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		
+		guard let repository = viewModel.repo(for: indexPath) else { return }
+		coordinator?.pushRepoDetailsView(repository)
 	}
 }

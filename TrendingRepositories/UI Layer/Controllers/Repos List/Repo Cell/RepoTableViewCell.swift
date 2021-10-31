@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 class RepoTableViewCell: UITableViewCell {
 	
@@ -19,6 +20,7 @@ class RepoTableViewCell: UITableViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		selectionStyle = .none
 		bookmarkButton.setImage(UIImage(systemName: K.Image.bookmark), for: .normal)
 		bookmarkButton.setImage(UIImage(systemName: K.Image.bookmarkFill), for: .selected)
 	}
@@ -42,6 +44,7 @@ class RepoTableViewCell: UITableViewCell {
 		self.repository = repository
 		
 		avatarImageView.setImage(with: repository.owner.avatarUrl)
+		avatarImageView.heroID = repository.heroID
 		
 		nameLabel.text = repository.fullName
 		descriptionLabel.text = repository.description

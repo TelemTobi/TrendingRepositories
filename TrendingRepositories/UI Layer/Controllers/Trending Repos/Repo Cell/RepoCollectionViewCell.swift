@@ -47,6 +47,7 @@ class RepoCollectionViewCell: UICollectionViewCell {
 		self.repository = repository
 		
 		avatarImageView.setImage(with: repository.owner.avatarUrl)
+		avatarImageView.heroID = repository.heroID
 		
 		nameLabel.text = repository.fullName
 		descriptionLabel.text = repository.description

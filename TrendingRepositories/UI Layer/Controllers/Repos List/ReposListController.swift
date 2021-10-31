@@ -26,7 +26,7 @@ class ReposListController: UITableViewController {
 	
 	private func setupTableView() {
 		tableView.register(cellType: RepoTableViewCell.self)
-		tableView.tableFooterView?.isHidden = true
+		tableView.tableFooterView?.isHidden = viewModel?.shouldLoadMoreResults != true
 	}
 	
 	private func registerSubscribers() {
@@ -47,7 +47,6 @@ class ReposListController: UITableViewController {
 		DispatchQueue.main.async { [weak self] in
 			if (self?.viewModel?.currentPage ?? 0) > 1 {
 				self?.tableView.reloadData()
-				self?.tableView.tableFooterView?.isHidden = true
 			} else {
 				self?.tableView.reloadDataWithAnimation()
 			}
@@ -68,7 +67,6 @@ extension ReposListController {
 		navigationController?.view.endEditing(true)
 		
 		if viewModel?.shouldLoadMoreResults == true, tableView.reachedEnd(offset: 150) {
-			tableView.tableFooterView?.isHidden = false
 			viewModel?.loadMoreResults()
 		}
 	}

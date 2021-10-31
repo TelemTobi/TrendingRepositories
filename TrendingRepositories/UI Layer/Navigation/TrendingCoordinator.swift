@@ -14,7 +14,6 @@ class TrendingCoordinator: Coordinator {
 	
 	init() {
 		rootViewController = UINavigationController()
-		rootViewController.navigationBar.prefersLargeTitles = true
 	}
 	
 	func start() {
@@ -29,8 +28,18 @@ class TrendingCoordinator: Coordinator {
 		
 		let reposListController = ReposListController.instantiate(storyboardName: .main)
 		reposListController.viewModel = viewModel
-		
 		reposListController.navigationItem.title = viewModel.pageTitle
+		
+		rootViewController.hero.isEnabled = false
 		rootViewController.pushViewController(reposListController, animated: true)
+	}
+	
+	func pushRepoDetailsView(_ repository: Repository) {
+		let repoDetailsController = RepoDetailsController.instantiate(storyboardName: .main)
+		repoDetailsController.viewModel = RepoDetailsViewModel(repository: repository)
+		repoDetailsController.navigationItem.title = repository.name
+		
+		rootViewController.hero.isEnabled = true
+		rootViewController.pushViewController(repoDetailsController, animated: true)
 	}
 }
