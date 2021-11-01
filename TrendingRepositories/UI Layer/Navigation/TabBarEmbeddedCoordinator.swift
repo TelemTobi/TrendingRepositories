@@ -41,6 +41,17 @@ class TabBarEmbeddedCoordinator: NSObject, Coordinator {
 
 		rootViewController.present(vc, animated: true)
 	}
+	
+	func presentShareSheet(_ viewModel: RepoDetailsViewModel?) {
+		guard let viewModel = viewModel,
+			  let repoLink = URL(string: viewModel.githubUrl)
+		else { return }
+
+		let attachedText = String(format: K.Message.shareFormat, viewModel.repoName, viewModel.ownerName)
+		let items: [Any] = [attachedText, repoLink]
+		let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+		rootViewController.present(activityVC, animated: true)
+	}
 }
 
 extension TabBarEmbeddedCoordinator: SFSafariViewControllerDelegate {

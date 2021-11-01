@@ -44,18 +44,17 @@ class ReposListViewModel: BaseViewModel {
 		provider.request(.searchRepositories(timeFrame, currentPage)) { [weak self] result in
 			guard let self = self else { return }
 			
-			defer { self.isLoadingPublisher.value = false }
-			
 			switch result {
 			case .success(let response):
 				do {
 					let newRepos = try response.map(GithubResponse<Repository>.self).items
 					self.repos.append(contentsOf: newRepos)
+					self.isLoadingPublisher.value = false
 				} catch {
-					self.errorMsgPublisher.send(K.Message.networkError)
+					self.errorMsgPublisher.send(K.Message.loadingError)
 				}
 			case .failure:
-				self.errorMsgPublisher.send(K.Message.networkError)
+				self.errorMsgPublisher.send(K.Message.loadingError)
 			}
 		}
 	}

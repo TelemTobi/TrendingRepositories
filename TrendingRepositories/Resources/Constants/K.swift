@@ -14,7 +14,9 @@ struct K {
 	}
 	
 	enum Message {
+		static let loadingError = "Whoops! loading failed"
 		static let networkError = "That might be your internet connection"
+		static let shareFormat = "Check out %@ repository by %@"
 	}
 	
 	enum Image {

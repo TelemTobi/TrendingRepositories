@@ -25,6 +25,7 @@ class RepoDetailsController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		setupShareButton()
 		setupElements()
 	}
 	
@@ -36,9 +37,17 @@ class RepoDetailsController: UIViewController {
 	
 //	MARK: - Setup Methods
 	
+	private func setupShareButton() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			barButtonSystemItem: .action,
+			target: self,
+			action: #selector(shareButtonTapped)
+		)
+	}
+	
 	private func setupElements() {
 		avatarImageView.setImage(with: viewModel?.avatarUrl ?? "")
-		avatarImageView.heroID = viewModel?.repository.heroID
+		avatarImageView.heroID = viewModel?.heroID
 		
 		ownerNameLabel.text = viewModel?.ownerName
 		descriptionLabel.text = viewModel?.description
@@ -48,6 +57,12 @@ class RepoDetailsController: UIViewController {
 		starsLabel.text = viewModel?.stars
 		issuesLabel.text = viewModel?.issues
 		dateLabel.text = viewModel?.creationDate
+	}
+	
+//	MARK: - Private Methods
+	
+	@objc private func shareButtonTapped() {
+		coordinator?.presentShareSheet(viewModel)
 	}
 	
 //	MARK: - Interface Builder Actions

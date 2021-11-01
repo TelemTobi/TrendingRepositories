@@ -9,10 +9,14 @@ import Foundation
 
 class RepoDetailsViewModel: BaseViewModel {
 	
-	let repository: Repository
+	private let repository: Repository
 	
 	var avatarUrl: String {
 		repository.owner.avatarUrl
+	}
+	
+	var repoName: String {
+		repository.name
 	}
 	
 	var ownerName: String {
@@ -45,6 +49,10 @@ class RepoDetailsViewModel: BaseViewModel {
 	
 	var profileUrl: String {
 		repository.owner.profileUrl
+	}
+	
+	var heroID: String {
+		repository.heroID
 	}
 	
 	var creationDate: String {

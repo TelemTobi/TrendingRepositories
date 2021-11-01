@@ -11,6 +11,7 @@ import Combine
 class FavoriteReposController: UIViewController {
 	
 	@IBOutlet private weak var listContainerView: UIView!
+	@IBOutlet private weak var noBookmarksView: UIStackView!
 	
 	weak var coordinator: FavoritesCoordinator?
 	
@@ -32,6 +33,7 @@ class FavoriteReposController: UIViewController {
 		reposList = ReposListController.instantiate(storyboardName: .main)
 		reposList.viewModel = viewModel
 		reposList.coordinator = coordinator
+		noBookmarksView.isHidden = !viewModel.isEmpty
 		
 		addChild(reposList)
 		reposList.didMove(toParent: self)
@@ -43,8 +45,15 @@ class FavoriteReposController: UIViewController {
 		NotificationCenter.default
 			.publisher(for: K.NotificationName.bookmarksChange, object: nil)
 			.sink(receiveValue: { [weak self] _ in
-				self?.viewModel.reloadData()
+				self?.reloadData()
 			})
 			.store(in: &subscriptions)
+	}
+	
+//	MARK: - Private Methods
+	
+	private func reloadData() {
+		viewModel.reloadData()
+		noBookmarksView.isHidden = !viewModel.isEmpty
 	}
 }

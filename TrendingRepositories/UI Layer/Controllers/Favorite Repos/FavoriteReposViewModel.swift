@@ -9,6 +9,10 @@ import Foundation
 
 class FavoriteReposViewModel: ReposListViewModel {
 	
+	var isEmpty: Bool {
+		repos.count == 0
+	}
+	
 	init() {
 		super.init(timeFrame: .week, initialData: UserDefaults.bookmarkedRepos)
 		reloadData()
