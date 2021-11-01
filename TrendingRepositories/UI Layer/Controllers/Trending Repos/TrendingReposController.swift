@@ -18,6 +18,8 @@ class TrendingReposController: UIViewController {
 	private var subscriptions = Set<AnyCancellable>()
 	private var collectionView: UICollectionView!
 	
+	private weak var errorView: ConnectionErrorView?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -45,9 +47,16 @@ class TrendingReposController: UIViewController {
 	}
 	
 	private func registerSubscribers() {
-		viewModel.isLoadingSection
-			.sink(receiveValue: { [weak self] _ in
+		viewModel.isLoadingPublisher
+			.sink(receiveValue: { [weak self] isLoading in
 				self?.collectionView.animatedReload()
+				self?.collectionView.isUserInteractionEnabled = !isLoading
+			})
+			.store(in: &subscriptions)
+		
+		viewModel.errorMsgPublisher
+			.sink(receiveValue: { [weak self] message in
+				self?.showErrorMessage(with: message)
 			})
 			.store(in: &subscriptions)
 		
@@ -57,6 +66,27 @@ class TrendingReposController: UIViewController {
 				self?.collectionView.animatedReload()
 			})
 			.store(in: &subscriptions)
+	}
+	
+//	MARK: - Private Methods
+	
+	private func showErrorMessage(with message: String) {
+		guard errorView == nil else { return }
+		
+		errorView = ConnectionErrorView.instance
+		errorView?.delegate = self
+		errorView?.show(on: view, with: message)
+	}
+}
+
+//	MARK: - Error View Delegate
+
+extension TrendingReposController: ErrorViewDelegate {
+	
+	func reload() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+			self?.viewModel.fetchTrendingRepos()
+		}
 	}
 }
 
@@ -108,7 +138,7 @@ extension TrendingReposController: UICollectionViewDelegate {
 		
 		return UIContextMenuConfiguration(
 			identifier: identifier,
-			previewProvider: nil) { _ in
+			previewProvider: coordinator?.repoDetailsPreview(repository)) { _ in
 				
 				let detailsAction = UIAction(
 					title: K.ContextAction.moreDetails,

@@ -14,8 +14,7 @@ struct K {
 	}
 	
 	enum Message {
-		static let networkError = "A network error has occured"
-		static let loadingMore = "Loading more results..."
+		static let networkError = "That might be your internet connection"
 	}
 	
 	enum Image {

@@ -26,6 +26,8 @@
 		D23EF0DA272D72EC003E0AFD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */; };
 		D246DF38272F14CA00BE233A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DF37272F14CA00BE233A /* String+Ext.swift */; };
 		D246DF3A272F364500BE233A /* TabBarEmbeddedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DF39272F364500BE233A /* TabBarEmbeddedCoordinator.swift */; };
+		D246DF3E272FEEDA00BE233A /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D246DF3D272FEEDA00BE233A /* ConnectionErrorView.xib */; };
+		D246DF40272FEEE600BE233A /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D246DF3F272FEEE600BE233A /* ConnectionErrorView.swift */; };
 		D24E1644272D8F1400916729 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */; };
 		D24E1646272D9BE800916729 /* IndexPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E1645272D9BE800916729 /* IndexPath+Ext.swift */; };
 		D24E164E272DB01A00916729 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24E164D272DB01900916729 /* ToastView.xib */; };
@@ -74,6 +76,8 @@
 		D23EF0D9272D72EC003E0AFD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		D246DF37272F14CA00BE233A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		D246DF39272F364500BE233A /* TabBarEmbeddedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEmbeddedCoordinator.swift; sourceTree = "<group>"; };
+		D246DF3D272FEEDA00BE233A /* ConnectionErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
+		D246DF3F272FEEE600BE233A /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
 		D24E1643272D8F1400916729 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		D24E1645272D9BE800916729 /* IndexPath+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Ext.swift"; sourceTree = "<group>"; };
 		D24E164D272DB01900916729 /* ToastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
@@ -181,6 +185,15 @@
 			path = Layouts;
 			sourceTree = "<group>";
 		};
+		D246DF3C272FEE9300BE233A /* Connection Error View */ = {
+			isa = PBXGroup;
+			children = (
+				D246DF3F272FEEE600BE233A /* ConnectionErrorView.swift */,
+				D246DF3D272FEEDA00BE233A /* ConnectionErrorView.xib */,
+			);
+			path = "Connection Error View";
+			sourceTree = "<group>";
+		};
 		D24E164C272DB00000916729 /* ToastView */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +276,7 @@
 				D2F38B5E272C2F82009DE6D6 /* TrendingReposController.swift */,
 				D20F64CB272E7D860083D74C /* Section Header */,
 				D23EF0BD272D373E003E0AFD /* Repo Cell */,
+				D246DF3C272FEE9300BE233A /* Connection Error View */,
 			);
 			path = "Trending Repos";
 			sourceTree = "<group>";
@@ -459,6 +473,7 @@
 				D20F64CF272E7DDC0083D74C /* TitleSectionHeader.xib in Resources */,
 				D23EF0C3272D413F003E0AFD /* RepoCollectionViewCell.xib in Resources */,
 				D2F7F22F272BEC24004D883E /* LaunchScreen.storyboard in Resources */,
+				D246DF3E272FEEDA00BE233A /* ConnectionErrorView.xib in Resources */,
 				D2F38B4A272C1A1F009DE6D6 /* Assets.xcassets in Resources */,
 				D2F7F22A272BEC22004D883E /* Main.storyboard in Resources */,
 			);
@@ -529,6 +544,7 @@
 				D2C350C2272ED9EE007BBB51 /* RepoTableViewCell.swift in Sources */,
 				D23EF0CD272D5647003E0AFD /* TrendingReposViewModel.swift in Sources */,
 				D27E933F272EF4FA00773002 /* RepoDetailsViewController.swift in Sources */,
+				D246DF40272FEEE600BE233A /* ConnectionErrorView.swift in Sources */,
 				D2C350BD272ED7BB007BBB51 /* UITableView+Ext.swift in Sources */,
 				D2F38B53272C21EF009DE6D6 /* UIViewController+Ext.swift in Sources */,
 				D2F38B4D272C1C44009DE6D6 /* MainTabBarController.swift in Sources */,

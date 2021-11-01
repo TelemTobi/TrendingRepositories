@@ -27,4 +27,11 @@ class TrendingCoordinator: TabBarEmbeddedCoordinator {
 		rootViewController.hero.isEnabled = false
 		rootViewController.pushViewController(reposListController, animated: true)
 	}
+	
+	func repoDetailsPreview(_ repository: Repository) -> (() -> UIViewController) {
+		let repoDetailsController = RepoDetailsController.instantiate(storyboardName: .main)
+		repoDetailsController.viewModel = RepoDetailsViewModel(repository: repository)
+		repoDetailsController.navigationItem.title = repository.name
+		return { repoDetailsController }
+	}
 }

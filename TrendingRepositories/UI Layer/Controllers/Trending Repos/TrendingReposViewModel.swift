@@ -14,23 +14,24 @@ class TrendingReposViewModel: BaseViewModel {
 	private let provider = MoyaProvider<Github>()
 	private var repos: [TimeFrame: [Repository]] = [:]
 	
-	var isLoadingSection = CurrentValueSubject<[Bool], Never>([Bool](repeating: false, count: 3))
+	private var loadingSections = [Bool](repeating: false, count: 3)
 	
 //	MARK: - Private Methods
 	
 	private func fetchRepos(timeFrame: TimeFrame) {
-		isLoadingSection.value[timeFrame.rawValue] = true
+		loadingSections[timeFrame.rawValue] = true
 		
 		provider.request(.searchRepositories(timeFrame, 1)) { [weak self] result in
 			guard let self = self else { return }
-
-			defer { self.isLoadingSection.value[timeFrame.rawValue] = false }
 
 			switch result {
 			case .success(let response):
 				do {
 					let newRepos = try response.map(GithubResponse<Repository>.self).items
 					self.repos[timeFrame] = newRepos
+					
+					self.loadingSections[timeFrame.rawValue] = false
+					self.isLoadingPublisher.value = false
 				} catch {
 					self.errorMsgPublisher.send(K.Message.networkError)
 				}
@@ -47,13 +48,15 @@ class TrendingReposViewModel: BaseViewModel {
 	}
 	
 	func fetchTrendingRepos() {
+		isLoadingPublisher.value = true
+		
 		fetchRepos(timeFrame: .week)
 		fetchRepos(timeFrame: .month)
 		fetchRepos(timeFrame: .year)
 	}
 	
 	func isLoadingSection(_ section: Int) -> Bool {
-		return isLoadingSection.value[section]
+		return loadingSections[section]
 	}
 	
 	func numberOfItems(in section: Int) -> Int {

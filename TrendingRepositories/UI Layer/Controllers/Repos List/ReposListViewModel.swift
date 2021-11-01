@@ -19,7 +19,6 @@ class ReposListViewModel: BaseViewModel {
 	private var searchText: String = ""
 	private var filteredRepos: [Repository] = []
 	private var isSearchActive: Bool { searchText.count > 1 }
-	private var searchWorkItem: DispatchWorkItem!
 
 	var currentPage: Int = 1
 	var pageTitle: String { K.TimeFrameTitle[selectedTimeFrame] ?? "" }
@@ -29,21 +28,6 @@ class ReposListViewModel: BaseViewModel {
 		
 		selectedTimeFrame = timeFrame
 		repos = initialData
-		
-		setupSearchWorkItem()
-	}
-	
-//	MARK: - Setup Methods
-	
-	private func setupSearchWorkItem() {
-		searchWorkItem = DispatchWorkItem(block: { [weak self] in
-			guard let self = self else { return }
-			
-			self.filteredRepos = self.repos.filter({
-				$0.fullName.lowercased().contains(self.searchText.lowercased())
-			})
-			self.isLoadingPublisher.value = false
-		})
 	}
 	
 //	MARK: - Private Methods
@@ -101,6 +85,13 @@ class ReposListViewModel: BaseViewModel {
 			return
 		}
 		
-		DispatchQueue.global(qos: .userInitiated).async(execute: searchWorkItem)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			guard let self = self else { return }
+			
+			self.filteredRepos = self.repos.filter({
+				$0.fullName.lowercased().contains(self.searchText.lowercased())
+			})
+			self.isLoadingPublisher.value = false
+		}
 	}
 }
